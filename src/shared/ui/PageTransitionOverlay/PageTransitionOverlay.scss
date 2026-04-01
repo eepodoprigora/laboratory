@@ -1,0 +1,90 @@
+@use "@/application/css/base/variables" as *;
+
+.page-transition-overlay {
+  --leave-duration: 1000ms;
+  --enter-duration: 1000ms;
+
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-transition-overlay--transitioning {
+  pointer-events: auto;
+}
+
+.page-transition-overlay__panel {
+  position: absolute;
+  inset: 0;
+  background: $blue;
+  transform: translate3d(0, 100%, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.page-transition-overlay__lip {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 24vh;
+  min-height: 120px;
+  max-height: 240px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.page-transition-overlay__lip--top {
+  bottom: 100%;
+}
+
+.page-transition-overlay__lip--bottom {
+  top: 100%;
+}
+
+.page-transition-overlay__lip--bottom .page-transition-overlay__svg {
+  transform: scaleY(-1);
+  transform-origin: center;
+}
+
+.page-transition-overlay__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.page-transition-overlay__path {
+  fill: $blue;
+}
+
+.page-transition-overlay--leaving .page-transition-overlay__panel {
+  animation: page-transition-panel-leave var(--leave-duration)
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-transition-overlay--entering .page-transition-overlay__panel {
+  animation: page-transition-panel-enter var(--enter-duration)
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes page-transition-panel-leave {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes page-transition-panel-enter {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}

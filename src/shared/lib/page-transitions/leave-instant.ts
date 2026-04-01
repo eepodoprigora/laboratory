@@ -1,0 +1,1 @@
+export const leaveInstant = async (): Promise<void> => { };

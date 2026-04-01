@@ -1,0 +1,16 @@
+.orientation-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.orientation-image__img {
+    pointer-events: none;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.orientation-image--fill {
+    position: absolute;
+}

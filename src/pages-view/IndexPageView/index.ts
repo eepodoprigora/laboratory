@@ -1,0 +1,1 @@
+export { default, type RawProps as IndexPageViewRawProps } from './IndexPageView'

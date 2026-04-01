@@ -1,0 +1,40 @@
+.text-animation {
+  --text-animation-duration: 0.4s;
+  --text-animation-delay: 0s;
+  --text-animation-stagger: 0.02s;
+  --text-animation-distance: 110%;
+  --text-animation-ease: ease;
+  white-space: pre-wrap;
+
+  .text-animation-wrap {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+
+  .text-animation-item {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(var(--text-animation-distance));
+    transition-property: opacity, transform;
+    transition-duration: var(--text-animation-duration);
+    transition-timing-function: var(--text-animation-ease);
+    transition-delay: calc(
+      var(--text-animation-delay) + var(--text-animation-index, 0) *
+        var(--text-animation-stagger)
+    );
+    will-change: transform, opacity;
+  }
+
+  &.is-in-view {
+    .text-animation-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.text-animation-word {
+  display: inline-block;
+  white-space: nowrap;
+}

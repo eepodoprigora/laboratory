@@ -1,0 +1,16 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.recomposition {
+  @include flex-center(column);
+}
+
+.recomposition__steps {
+  --pt: 80px;
+  --pb: 60px;
+  padding: var(--pt) 0 var(--pb);
+}
+
+.recomposition__button {
+  margin: 0 auto;
+}

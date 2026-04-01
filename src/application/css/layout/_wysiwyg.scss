@@ -1,0 +1,22 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.wysiwyg {
+  p:not([class]) {
+    &:not(:first-child) {
+      margin-top: 1.33em;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.33em;
+    }
+  }
+
+  p:empty {
+    display: none;
+  }
+
+  li::marker {
+    color: $green-1;
+  }
+}

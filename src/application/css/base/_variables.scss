@@ -1,0 +1,38 @@
+// transition timings
+
+$app-default-duration: 0.4s;
+$app-medium-duration: 0.7s;
+$app-large-duration: 1s;
+
+$app-default-easing: cubic-bezier(0.25, 0.25, 0, 1);
+
+$app-small-icons-transition-opacity: opacity ease-in 0.4s;
+
+$base-border-radius: 20px;
+
+// Colors
+
+$black: #060d0f;
+$white: #f7f5f2;
+$beige-1: #efe9e1;
+$grey: #808080;
+$green-1: #74825f;
+$green-2: #66754f;
+
+// Font settings
+$font-main:
+  "Helvetica",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  "Helvetica Neue",
+  Arial,
+  "Noto Sans",
+  "Liberation Sans",
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji";
+$font-family: $font-main;

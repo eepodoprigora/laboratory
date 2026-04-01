@@ -1,0 +1,47 @@
+// base
+@use "base/custom-properties";
+@use "base/keyframes";
+@use "base/reset";
+@use "base/fonts";
+
+// atoms
+@use "layout/typography";
+@use "layout/common";
+@use "@/shared/ui/Link/Link.scss";
+@use "@/shared/ui/Button/Button.scss";
+@use "@/shared/ui/OrientationImage/OrientationImage.scss";
+@use "@/shared/ui/Reveal/Reveal.scss";
+@use "@/shared/ui/MarqueeText/MarqueeText.scss";
+@use "@/shared/ui/IconImage/IconImage.scss";
+
+// shared
+@use "@/shared/ui/Parallaxed/Parallaxed.scss";
+@use "@/shared/ui/TextAnimation/TextAnimation.scss";
+@use "@/shared/ui/AnimatedCounter/AnimatedCounter.scss";
+@use "@/shared/ui/Preloader/Preloader.scss";
+
+// entities
+@use "@/entities/advantage/ui/Advantage.scss";
+@use "@/entities/direction/ui/Direction.scss";
+@use "@/entities/result/ui/BeforeAfter/BeforeAfter.scss";
+@use "@/entities/result/ui/Story/Story.scss";
+
+// features
+@use "@/features/chess/Chess.scss";
+
+// Layouts
+@use "layout/wysiwyg";
+
+// widgets
+@use "@/widgets/Header/Header.scss";
+@use "@/widgets/Hero/Hero.scss";
+@use "@/widgets/ResultsSlider/ResultsSlider.scss";
+
+// sections
+@use "@/pages-view/IndexPageView/sections/About/About.scss";
+@use "@/pages-view/IndexPageView/sections/Recomposition/Recomposition.scss";
+@use "@/pages-view/IndexPageView/sections/Directions/Directions.scss";
+@use "@/pages-view/IndexPageView/sections/Reviews/Reviews.scss";
+
+// pages
+@use "@/pages-view/IndexPageView/IndexPageView.scss";

@@ -1,0 +1,156 @@
+@use "sass:math";
+
+@mixin visually-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+@function _strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@mixin fs-fluid($min, $max, $from, $to) {
+  $min: _strip-unit($min);
+  $max: _strip-unit($max);
+  $from: _strip-unit($from);
+  $to: _strip-unit($to);
+
+  $slope: math.div($max - $min, $to - $from);
+  $base: $min - $slope * $from;
+
+  font-size: clamp(#{$min}px, calc(#{$base}px + #{$slope * 100}vw), #{$max}px);
+}
+
+@mixin scrollbar($color: #000) {
+  @supports (scrollbar-width: thin) {
+    scrollbar-width: thin;
+    scrollbar-color: $color transparent;
+  }
+
+  @supports selector(*::-webkit-scrollbar) {
+    scrollbar-width: revert;
+    scrollbar-color: revert;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: rgba($color, 0.01);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: 4px;
+  }
+
+  @include tablet-mobile() {
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 8px;
+      background-color: rgba($color, 0.01);
+    }
+  }
+}
+
+@mixin hidden-scrollbar() {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+}
+@mixin text-trim-fallback {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+
+  @supports not (text-box-trim: trim-both) {
+    padding-top: 0.25em;
+  }
+}
+
+@mixin grid-columns($num: 1, $prop: width) {
+  #{$prop}: calc(
+    var(--grid-column-width) * #{$num} + var(--grid-gap) * #{$num - 1}
+  );
+}
+
+@mixin grid-offset($prop, $num: 1) {
+  #{$prop}: calc(
+    var(--grid-column-width) * #{$num} + var(--grid-gap) * #{$num}
+  );
+}
+
+@mixin desktop-large() {
+  @media screen and (min-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin desktop-tablet() {
+  @media screen and (max-width: 1466px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin tablet-mobile() {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+  @media screen and (max-width: 767px),
+    (max-width: 900px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin hover() {
+  @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+    &:not(:disabled):hover {
+      @content;
+    }
+  }
+}
+
+@mixin active() {
+  &:not(:disabled):active {
+    @content;
+  }
+}
+
+@mixin hover-active() {
+  @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+    &:not(:disabled):hover {
+      @content;
+    }
+  }
+
+  &:not(:disabled):active {
+    @content;
+  }
+}
+
+@function vh($multiplier) {
+  @return calc(var(--mobile-vh) * #{$multiplier});
+}
+
+@mixin flex-center($direction: row, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: $justify;
+}

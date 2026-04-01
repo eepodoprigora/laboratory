@@ -1,0 +1,30 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.preloader {
+  position: fixed;
+  width: 100vw;
+  height: vh(100);
+  z-index: 9999;
+  display: block;
+  background-color: $black;
+  transition: opacity 0.5s ease;
+  @include flex-center();
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.no-js {
+    display: none;
+  }
+}
+
+.preloader__count {
+  --bottom: 3.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: var(--bottom);
+}

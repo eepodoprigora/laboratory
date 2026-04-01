@@ -1,0 +1,50 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.direction {
+  background-color: $white;
+}
+
+.direction__wrapper {
+  --pv: 20px;
+  width: 100%;
+  display: flex;
+  padding: var(--pv) 0;
+  border-top: 1px solid rgba($black, 0.2);
+}
+
+.direction__image-container {
+  position: relative;
+  --h: 720px;
+  height: var(--h);
+  width: 50%;
+
+  @include desktop-tablet {
+    --h: 490px;
+  }
+
+  @include tablet {
+    --h: 290px;
+  }
+}
+
+.direction__content {
+  --pt: 100px;
+  padding-top: var(--pt);
+  width: 50%;
+  @include grid-offset(padding-right, 2);
+  position: relative;
+}
+
+.direction__buttons {
+  --b: 80px;
+  position: absolute;
+  bottom: var(--b);
+}
+
+.direction__button {
+  --mr: 15px;
+  &:not(:last-child) {
+    margin-right: var(--mr);
+  }
+}

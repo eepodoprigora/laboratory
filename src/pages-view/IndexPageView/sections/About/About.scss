@@ -1,0 +1,63 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.about {
+  --pv: 120px;
+  --image-h: 500px;
+  --text-h: 500px;
+  padding-bottom: var(--pv);
+}
+
+.about__top {
+  height: calc(var(--text-h) + var(--image-h));
+}
+
+.about__top-text {
+  --mb: 80px;
+  @include grid-offset(margin-left, 4);
+  @include grid-offset(margin-right, 5);
+  position: sticky;
+  padding: var(--pv) 0;
+  top: 0;
+  z-index: 2;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.about__main-image-container {
+  position: relative;
+  @include grid-columns(5);
+  margin: 0 auto;
+  height: var(--image-h);
+}
+
+.about__top {
+  --mb: 80px;
+  margin-bottom: var(--mb);
+}
+
+.about__advantages {
+  --advantages-count: 4;
+  --gap: 20px;
+  gap: var(--gap);
+}
+
+.about__advantages-list {
+  display: flex;
+  gap: var(--gap);
+  width: 100%;
+}
+
+.about__advantages-item {
+  flex: 0 0
+    calc(
+      (100% - (var(--gap) * (var(--advantages-count) - 1))) /
+        var(--advantages-count)
+    );
+  min-width: 0;
+  display: flex;
+}
+
+.about__advantage {
+  width: 100%;
+}

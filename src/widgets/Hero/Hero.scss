@@ -1,0 +1,29 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.hero {
+  height: vh(100);
+  width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+}
+
+.hero__text-block {
+  position: relative;
+  z-index: 2;
+  @include grid-columns(5.5);
+  color: $white;
+}
+
+.hero__button {
+  --b: 70px;
+  position: absolute;
+  bottom: var(--b);
+}

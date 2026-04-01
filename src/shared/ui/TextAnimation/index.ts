@@ -1,0 +1,2 @@
+
+export { TextAnimation } from './TextAnimation'

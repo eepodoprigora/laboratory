@@ -1,0 +1,1 @@
+export { BeforeAfter, type RawProps as BeforeAfterRawProps } from './BeforeAfter';

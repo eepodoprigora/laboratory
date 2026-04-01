@@ -1,0 +1,62 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/layout/typography" as *;
+
+html {
+  background-color: $white;
+  color: $black;
+
+  &.no-scroll {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width, 0px);
+    @include tablet {
+      padding-right: calc(var(--actual-scrollbar-width, 0px));
+    }
+  }
+}
+
+.wrapper {
+  max-width: var(--wrapper-max-width);
+  padding: 0 var(--offset-x);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section {
+  --pv: 120px;
+  padding: var(--pv) 0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.block__header {
+  --mb: 40px;
+  text-transform: uppercase;
+  color: $green-1;
+  margin-bottom: var(--mb);
+  @extend %text-descr-tp;
+}
+
+.block__descr {
+  @include grid-columns(10);
+  @extend %h3-tp;
+}

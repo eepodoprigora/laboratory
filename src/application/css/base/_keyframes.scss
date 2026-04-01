@@ -1,0 +1,19 @@
+@keyframes parallax {
+    0% {
+        transform: scale(var(--parallax-scale, 1))
+            translate3d(
+                calc(var(--parallax-x-from, 0px) + var(--parallax-x-from-offset, 0px)),
+                calc(var(--parallax-y-from, 0px) + var(--parallax-y-from-offset, 0px)),
+                0
+            );
+    }
+
+    100% {
+        transform: scale(var(--parallax-scale, 1))
+            translate3d(
+                calc(var(--parallax-x-to, 0px) + var(--parallax-x-to-offset, 0px)),
+                calc(var(--parallax-y-to, 0px) + var(--parallax-y-to-offset, 0px)),
+                0
+            );
+    }
+}

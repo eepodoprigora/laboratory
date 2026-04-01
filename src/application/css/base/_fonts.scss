@@ -1,0 +1,22 @@
+@use "sass:string";
+@use "sass:list";
+
+@mixin webfont($family, $file, $weight: normal, $style: normal) {
+  $sources: list.join(
+    (
+      url(string.quote($file + ".woff2")) format("woff2"),
+      url(string.quote($file + ".woff")) format("woff")
+    ),
+    ()
+  );
+
+  @font-face {
+    font-family: string.quote($family);
+    src: $sources;
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+@include webfont("Somic", "/fonts/ntsomic-regular", 400);
+@include webfont("Somic", "/fonts/ntsomic-medium", 500);

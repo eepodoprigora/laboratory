@@ -1,0 +1,86 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/layout/typography" as *;
+
+%btn-base {
+  --pv: 15px;
+  --ph: 25px;
+  --br: 30px;
+  padding: var(--pv) var(--ph);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--br);
+  position: relative;
+  @extend %button-tp;
+
+  transition:
+    background-color $app-default-duration $app-default-easing,
+    color $app-default-duration $app-default-easing;
+}
+
+%btn-primary {
+  @extend %btn-base;
+
+  background-color: $green-1;
+  color: $white;
+
+  @include hover-active() {
+    background-color: $green-2;
+
+    .btn__icon {
+      opacity: 1;
+      transform: translate(10px, -50%);
+    }
+
+    .btn__text {
+      transform: translateX(-10px);
+    }
+  }
+}
+
+.btn__icon {
+  --size: 14px;
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
+  right: var(--ph);
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  mask-image: url("/static/images/icons/arrow-right.svg");
+  mask-size: contain;
+  mask-position: center;
+  background-color: $white;
+  transition:
+    transform $app-default-duration $app-default-easing,
+    opacity $app-default-duration $app-default-easing;
+}
+
+.btn__text {
+  transition: transform $app-default-duration $app-default-easing;
+}
+
+.btn--primary {
+  @extend %btn-primary;
+}
+
+.btn--secondary {
+  @extend %btn-primary;
+  background-color: transparent;
+  border: 1px solid $green-1;
+  color: $green-1;
+  transition:
+    border-color $app-default-duration $app-default-easing,
+    color $app-default-duration $app-default-easing;
+
+  .btn__icon {
+    background-color: $green-1;
+  }
+
+  @include hover-active() {
+    border-color: $green-1;
+    color: $green-1;
+    background-color: transparent;
+  }
+}

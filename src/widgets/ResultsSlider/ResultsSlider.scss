@@ -1,0 +1,16 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.results-slider {
+  --pt: 80px;
+  padding-top: var(--pt);
+}
+
+.results-slider__slide {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results-slider__story {
+  @include grid-columns(9);
+}

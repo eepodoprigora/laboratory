@@ -1,0 +1,51 @@
+.parallaxed {
+  position: relative;
+  overflow: clip;
+  width: 100%;
+  height: 100%;
+
+  &.responsive__item {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.parallaxed--floating-only {
+  overflow: visible;
+}
+
+.parallaxed-item {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+
+  @supports (animation-timeline: view()) {
+    will-change: auto;
+  }
+}
+
+.parallaxed-item__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.parallaxed-item--js {
+  .parallaxed-item__wrapper {
+    width: calc(100% * var(--scale));
+    height: calc(100% * var(--scale));
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.parallaxed-item--floating-only {
+  .parallaxed-item__wrapper {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: none;
+  }
+}

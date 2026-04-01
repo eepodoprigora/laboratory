@@ -1,0 +1,41 @@
+{
+  "name": "laboratory fit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "img-comparison-slider": "^8.0.7",
+    "isomorphic-dompurify": "2.26.0",
+    "lodash.debounce": "^4.0.8",
+    "motion": "12.4.1",
+    "next": "15.2.8",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "typograf": "^7.6.0",
+    "usehooks-ts": "^3.1.1",
+    "zustand": "5.0.3"
+  },
+  "devDependencies": {
+    "@eslint-react/eslint-plugin": "^2.13.0",
+    "@feature-sliced/eslint-config": "^0.1.1",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.1.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react-compiler": "19.1.0-rc.2",
+    "eslint-plugin-sonarjs": "^3.0.6",
+    "sass": "^1.97.3",
+    "typescript": "^5",
+    "typescript-eslint": "^8.57.0"
+  }
+}

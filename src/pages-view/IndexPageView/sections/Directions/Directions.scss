@@ -1,0 +1,34 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.directions__wrapper {
+  width: 100%;
+  @include flex-center(column);
+}
+
+.directions__cards {
+  --pt: 80px;
+  --margin-bottom: -500px;
+  --index: 1;
+  margin-bottom: var(--margin-bottom);
+  padding-top: var(--pt);
+  width: 100%;
+}
+
+.directions__card {
+  --height: 800px;
+  --offset: 265px;
+
+  position: sticky;
+  min-height: var(--height);
+  top: calc(var(--offset) * var(--index));
+
+  @include desktop-tablet {
+    --height: 540px;
+  }
+
+  @include mobile {
+    position: relative;
+    top: auto;
+  }
+}

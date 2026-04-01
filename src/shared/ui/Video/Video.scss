@@ -1,0 +1,12 @@
+@use "@/app/css/base/variables" as *;
+@use "@/app/css/utils/mixins" as *;
+
+.video__preview-img {
+  opacity: 1;
+  transition: opacity $app-default-duration $app-default-easing;
+  pointer-events: none;
+}
+
+.video__preview-img--ready {
+  opacity: 0;
+}

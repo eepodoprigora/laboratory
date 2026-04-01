@@ -1,0 +1,44 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.header {
+  --mr: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 10;
+  background-color: rgba($white, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.header__logo {
+  --width: 135px;
+  --height: 42px;
+  width: var(--width);
+  height: var(--height);
+  position: relative;
+  display: inline-flex;
+  margin-right: var(--mr);
+}
+
+.header__wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header__list {
+  @include flex-center();
+}
+
+.header__list-item {
+  &:not(:last-child) {
+    margin-right: var(--mr);
+  }
+}
+
+.header__button {
+  margin-left: auto;
+}

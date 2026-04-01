@@ -1,0 +1,33 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.animated-counter {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.animated-counter__digit-wrap {
+  display: inline-block;
+  position: relative;
+  width: 0.65em;
+  height: 1em;
+  overflow: hidden;
+}
+
+.animated-counter__digit-column {
+  display: flex;
+  flex-direction: column;
+  transition: transform $app-medium-duration $app-default-easing;
+  will-change: transform;
+}
+
+.animated-counter__digit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.65em;
+  height: 1em;
+  flex: 0 0 1em;
+}

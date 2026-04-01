@@ -1,0 +1,62 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.marquee-text {
+  --marquee-offset: 0px;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: clamp(120px, 12vw, 220px);
+  transform: translate(100%, -50%);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: difference;
+  transition: transform $app-medium-duration ease-in-out;
+}
+
+.marquee-text--ready {
+  transform: translate(0, -50%);
+}
+
+.marquee-text__viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.marquee-text__track {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  transform: translate3d(var(--marquee-offset), -50%, 0);
+  transform-origin: center;
+}
+
+.marquee-text__item {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.marquee-text__label {
+  display: inline-block;
+  padding-right: 24px;
+  font-size: clamp(48px, 8vw, 140px);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.marquee-text__separator {
+  display: inline-block;
+  padding-right: 24px;
+  line-height: 1;
+}

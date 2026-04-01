@@ -1,0 +1,6 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.reviews {
+  @include flex-center(column);
+}
