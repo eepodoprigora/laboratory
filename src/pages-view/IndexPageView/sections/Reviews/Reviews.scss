@@ -4,3 +4,10 @@
 .reviews {
   @include flex-center(column);
 }
+
+.reviews__button {
+  --mr: 15px;
+  &:not(:last-child) {
+    margin-right: var(--mr);
+  }
+}

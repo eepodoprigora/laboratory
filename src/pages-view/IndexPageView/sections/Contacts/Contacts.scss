@@ -1,0 +1,87 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.contacts__map {
+  width: 50%;
+  height: vh(100);
+}
+
+.contacts__main {
+  display: flex;
+}
+
+.contacts__top-text {
+  text-align: center;
+}
+
+.contacts__info {
+  width: 50%;
+  @include flex-center(column, center, flex-start);
+}
+
+.contacts__description {
+  --mb: 80px;
+  margin-bottom: var(--mb);
+  width: 60%;
+}
+
+.contacts__working,
+.contacts__address {
+  --mb: 15px;
+  margin-bottom: var(--mb);
+}
+
+.contacts__social-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.contacts__social-icon {
+  --size: 30px;
+  --icon-size: 15px;
+  --mr: 5px;
+
+  position: relative;
+  z-index: 2;
+  margin-right: var(--mr);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: $blue-1;
+  transition: background-color $app-default-duration $app-default-easing;
+  border: 1px solid $blue-1;
+  .link__container {
+    align-items: center;
+  }
+
+  &::before {
+    content: "";
+    width: var(--icon-size);
+    height: var(--icon-size);
+    background-color: $white;
+
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+    .contacts__social-link--tg & {
+      mask-image: url("/static/images/icons/telegram.svg");
+    }
+  }
+}
+
+.contacts__social-link--tg {
+  @include hover {
+    .contacts__social-icon {
+      background-color: $white;
+
+      &::before {
+        background-color: $blue-1;
+      }
+    }
+  }
+}

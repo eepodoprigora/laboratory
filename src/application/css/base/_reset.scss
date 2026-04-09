@@ -1,19 +1,45 @@
-@use './normalize';
+@use "./normalize";
 
 button {
-    padding: 0;
-    border: 0;
-    background-color: transparent;
-    font-size: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    color: inherit;
-    letter-spacing: inherit;
-    text-transform: inherit;
-    cursor: pointer;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input {
+  margin: 0;
+}
+
+input[type="range"] {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]:focus,
+input[type="range"]:focus-visible {
+  outline: none;
 }
 
 ul,
 ol {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }

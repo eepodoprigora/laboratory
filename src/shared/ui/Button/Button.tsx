@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import Link, { type LinkProps } from "@/shared/ui/Link";
+import Link from "@/shared/ui/Link";
 
 type BaseProps = {
   tag?: "button" | "a" | typeof Link;
@@ -13,6 +13,8 @@ type BaseProps = {
   children?: React.ReactNode;
 };
 
+type LinkComponentProps = React.ComponentProps<typeof Link>;
+
 type ButtonAsButtonProps = BaseProps &
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     tag?: "button";
@@ -24,7 +26,7 @@ type ButtonAsAnchorProps = BaseProps &
   };
 
 type ButtonAsLinkProps = BaseProps &
-  LinkProps & {
+  LinkComponentProps & {
     tag: typeof Link;
   };
 
@@ -87,7 +89,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
     }
 
     if (tag === Link) {
-      const linkProps = props as LinkProps;
+      const linkProps = props as LinkComponentProps;
 
       return (
         <Link

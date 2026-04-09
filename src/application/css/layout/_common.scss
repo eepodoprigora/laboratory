@@ -40,7 +40,7 @@ html {
 }
 
 .section {
-  --pv: 120px;
+  --pv: 100px;
   padding: var(--pv) 0;
 }
 
@@ -58,5 +58,5 @@ html {
 
 .block__descr {
   @include grid-columns(10);
-  @extend %h3-tp;
+  @extend %text-l;
 }

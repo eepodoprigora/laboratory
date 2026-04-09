@@ -1,0 +1,62 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.marquee {
+  --pv: 80px;
+  --marquee-gap: 24px;
+  --marquee-duration: 280s;
+
+  position: relative;
+  overflow: hidden;
+  padding: var(--pv) 0;
+  width: 100%;
+
+  //   @include hover {
+  //     .marquee__track {
+  //       animation-play-state: paused;
+  //     }
+  //   }
+}
+
+.marquee__viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    $black 6%,
+    $black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    $black 6%,
+    $black 94%,
+    transparent 100%
+  );
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--marquee-gap);
+  will-change: transform;
+  animation: marquee-scroll var(--marquee-duration) linear infinite;
+}
+
+.marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  width: max-content;
+  gap: var(--marquee-gap);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
+  }
+}

@@ -27,7 +27,7 @@ export const Direction = ({
             split="letters"
           />
           <TextAnimation
-            className="direction__description text-l"
+            className="direction__description text-m"
             text={description ?? ""}
             split="words"
           />

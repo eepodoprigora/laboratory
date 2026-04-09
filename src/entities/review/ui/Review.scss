@@ -1,0 +1,33 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.review {
+  --br: 20px;
+  --p: 20px;
+
+  border-radius: var(--br);
+  background-color: rgba($beige-1, 0.5);
+  @include grid-columns(4);
+  padding: var(--p);
+  position: relative;
+  height: fit-content;
+
+  &:nth-child(3n) {
+    @include grid-columns(5);
+  }
+}
+
+.review__name {
+  --mb: 20px;
+  margin-bottom: var(--mb);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.review__quote {
+  --offset: 10px;
+  position: absolute;
+  top: var(--offset);
+  right: var(--offset);
+  opacity: 0.05;
+}

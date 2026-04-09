@@ -2,15 +2,47 @@
 @use "@/application/css/base/variables" as *;
 
 .results-slider {
+  --h: 500px;
   --pt: 80px;
   padding-top: var(--pt);
+  width: 100%;
+}
+
+.results-slider__wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.results-slider__slides {
+  position: relative;
+  width: 100%;
+  height: var(--h);
 }
 
 .results-slider__slide {
-  display: flex;
-  justify-content: space-between;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity $app-medium-duration $app-default-easing;
+
+  &.is-active {
+    opacity: 1;
+    z-index: 2;
+  }
 }
 
 .results-slider__story {
-  @include grid-columns(9);
+  display: flex;
+  @include grid-offset(padding-right, 2);
+  @include grid-offset(padding-left, 2);
+}
+
+.results-slider__buttons {
+  --gap: 10px;
+  display: flex;
+  gap: var(--gap);
+  position: absolute;
+  top: 0;
+  @include grid-offset(margin-left, 10);
+  pointer-events: none;
 }

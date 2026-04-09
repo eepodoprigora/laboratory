@@ -148,9 +148,9 @@
   @return calc(var(--mobile-vh) * #{$multiplier});
 }
 
-@mixin flex-center($direction: row, $justify: center) {
+@mixin flex-center($direction: row, $justify: center, $align: center) {
   display: flex;
   flex-direction: $direction;
-  align-items: center;
+  align-items: $align;
   justify-content: $justify;
 }

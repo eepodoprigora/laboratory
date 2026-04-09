@@ -2,7 +2,7 @@
 @use "@/application/css/base/variables" as *;
 
 .advantage {
-  background-color: $beige-1;
+  background-color: rgba($beige-1, 0.5);
   border-bottom-left-radius: $base-border-radius;
   border-bottom-right-radius: $base-border-radius;
 }

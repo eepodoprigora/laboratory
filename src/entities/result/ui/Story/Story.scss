@@ -1,2 +1,27 @@
 @use "@/application/css/utils/mixins" as *;
 @use "@/application/css/base/variables" as *;
+
+.story {
+  --pt: 80px;
+  padding-top: var(--pt);
+  @include grid-offset(padding-left, 3);
+  transform: translate(3px, 20px);
+  transition: transform $app-medium-duration $app-default-easing;
+
+  &.is-active {
+    transform: translate(0, 0);
+  }
+}
+
+.story__header {
+  --mb: 40px;
+  text-transform: uppercase;
+  color: #74825f;
+  margin-bottom: var(--mb);
+}
+
+.story__timing {
+  --pt: 40px;
+  padding-top: var(--pt);
+  color: #74825f;
+}

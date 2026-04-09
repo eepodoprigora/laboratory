@@ -1,10 +1,12 @@
 import { BeforeAfter, IResult, Story } from "@/entities/result";
 import { mergeRefs } from "@/shared/lib/merge-refs";
+import Button from "@/shared/ui/Button";
 import classNames from "classnames";
-import { useMemo, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type RawProps = {
   slides: IResult[];
+  activeIndex?: number;
 };
 
 type Props = React.HTMLAttributes<HTMLElement> &
@@ -12,18 +14,45 @@ type Props = React.HTMLAttributes<HTMLElement> &
     ref?: React.RefObject<HTMLDivElement | null>;
   };
 
-export const ResultsSlider = ({ slides, className, ref, ...props }: Props) => {
+export const ResultsSlider = ({
+  slides,
+  activeIndex = 0,
+  className,
+  ref,
+  ...props
+}: Props) => {
   const rootRef = useRef<HTMLElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(activeIndex);
 
-  const groupedSlides = useMemo(() => {
-    const result: IResult[][] = [];
+  useEffect(() => {
+    setCurrentIndex(activeIndex);
+  }, [activeIndex]);
 
-    for (let i = 0; i < slides.length; i += 2) {
-      result.push(slides.slice(i, i + 2));
-    }
+  const lastIndex = slides.length - 1;
 
-    return result;
-  }, [slides]);
+  const handlePrev = () => {
+    setCurrentIndex((prev) => {
+      if (prev <= 0) {
+        return lastIndex;
+      }
+
+      return prev - 1;
+    });
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => {
+      if (prev >= lastIndex) {
+        return 0;
+      }
+
+      return prev + 1;
+    });
+  };
+
+  if (!slides.length) {
+    return null;
+  }
 
   return (
     <section
@@ -31,26 +60,46 @@ export const ResultsSlider = ({ slides, className, ref, ...props }: Props) => {
       className={classNames("results-slider", className)}
       ref={mergeRefs([ref, rootRef])}>
       <div className="wrapper results-slider__wrapper">
-        <div className="results-slider__track">
-          {groupedSlides.map((group, index) => (
-            <div key={index} className="results-slider__slide">
-              {group.map((item) => (
-                <article key={item.id} className="results-slider__story">
-                  <BeforeAfter
-                    className="results-slider__before-after"
-                    imageBefore={item.imageBefore}
-                    imageAfter={item.imageAfter}
-                  />
-                  <Story
-                    className="results-slider__story-content"
-                    header={item.header}
-                    description={item.description}
-                    timing={item.timing}
-                  />
-                </article>
-              ))}
+        <div className="results-slider__slides">
+          {slides.map((item, index) => (
+            <div
+              key={item.id}
+              className={classNames("results-slider__slide", {
+                "is-active": index === currentIndex,
+              })}>
+              <article className="results-slider__story">
+                <BeforeAfter
+                  className="results-slider__before-after"
+                  imageBefore={item.imageBefore}
+                  imageAfter={item.imageAfter}
+                />
+                <Story
+                  className="results-slider__story-content"
+                  header={item.header}
+                  description={item.description}
+                  timing={item.timing}
+                  isActive={index === currentIndex}
+                />
+              </article>
             </div>
           ))}
+        </div>
+
+        <div className="results-slider__buttons">
+          <Button
+            icon="arrow-left"
+            aria-label="Предыдущий слайд"
+            className="btn--slider"
+            variant="secondary"
+            onClick={handlePrev}
+          />
+          <Button
+            icon="arrow-right"
+            aria-label="Следующий слайд"
+            className="btn--slider"
+            variant="secondary"
+            onClick={handleNext}
+          />
         </div>
       </div>
     </section>

@@ -52,6 +52,7 @@ export const Directions = ({
       className={classNames("directions section", className)}
       ref={mergeRefs([ref, localRef])}>
       <div className="wrapper directions__wrapper">
+        <div className="hero__main"></div>
         <SectionTop header={header} text={text} />
         {items.length > 0 && (
           <m.ul

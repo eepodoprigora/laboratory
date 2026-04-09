@@ -1,0 +1,41 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.faq {
+  @include flex-center(column);
+}
+
+.faq__image-container {
+  height: vh(100);
+  position: relative;
+  width: 100%;
+  @include flex-center();
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba($black, 0.4);
+    z-index: 2;
+  }
+}
+
+.faq__text-block {
+  @include grid-columns(6);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  @include flex-center(column);
+}
+
+.faq__header {
+  --mb: 40px;
+  margin-bottom: var(--mb);
+  text-transform: uppercase;
+  @include grid-columns(4);
+}
+
+.faq__accordion {
+  --pt: 80px;
+  @include grid-columns(10);
+  padding-top: var(--pt);
+}

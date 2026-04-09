@@ -84,3 +84,39 @@
     background-color: transparent;
   }
 }
+
+.btn__icon--arrow-left {
+  transform: rotate(180deg) translate(-50%, -50%);
+}
+
+.btn--slider {
+  --h: 30px;
+  --w: 48px;
+  width: var(--w);
+  height: var(--h);
+  pointer-events: all;
+  z-index: 2;
+  padding: 0;
+
+  .btn__icon {
+    opacity: 1;
+    left: 50%;
+    right: auto;
+    transform: none;
+    transform: translate(-50%, -50%);
+  }
+
+  .btn__icon--arrow-left {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+
+  @include hover-active() {
+    .btn__icon {
+      transform: translate(-50%, -50%) translateX(3px);
+
+      &.btn__icon--arrow-left {
+        transform: translate(-50%, -50%) translateX(-3px) rotate(180deg);
+      }
+    }
+  }
+}

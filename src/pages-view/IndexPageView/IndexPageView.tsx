@@ -8,6 +8,10 @@ import {
   DirectionsRawProps,
   Reviews,
   ReviewsRawProps,
+  Faq,
+  FaqRawProps,
+  Contacts,
+  ContactsRawProps,
 } from "@/pages-view/IndexPageView/sections";
 import { Hero, HeroRawProps } from "@/widgets/Hero";
 
@@ -18,6 +22,8 @@ export type RawProps = {
   recompositionSectionData: RecompositionRawProps;
   directionsSectionData: DirectionsRawProps;
   reviewsSectionData: ReviewsRawProps;
+  faqSectionData: FaqRawProps;
+  contactsSectionData: ContactsRawProps;
 };
 
 const IndexPageView = ({
@@ -27,6 +33,8 @@ const IndexPageView = ({
   recompositionSectionData,
   directionsSectionData,
   reviewsSectionData,
+  faqSectionData,
+  contactsSectionData,
 }: RawProps) => {
   return (
     <DefaultLayout>
@@ -37,6 +45,8 @@ const IndexPageView = ({
         <Recomposition {...recompositionSectionData} />
         <Directions {...directionsSectionData} />
         <Reviews {...reviewsSectionData} />
+        <Faq {...faqSectionData} />
+        <Contacts {...contactsSectionData} />
       </div>
     </DefaultLayout>
   );

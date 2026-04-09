@@ -52,7 +52,16 @@ export type VideoShape = {
 }[];
 
 
+export type IPhone = {
+    value: string;
+    link: string;
+}
 
+export type ISocial = {
+    type: string
+    value: string;
+    link: string;
+}
 
 
 
