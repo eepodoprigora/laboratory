@@ -1,5 +1,6 @@
 import { Chess, ChessRawProps } from "@/features/chess";
 import { mergeRefs } from "@/shared/lib/merge-refs";
+import { ILink } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
 import { SectionTop } from "@/shared/ui/SectionTop";
 
@@ -10,7 +11,7 @@ export type RawProps = {
   header: string;
   text: string;
   steps?: ChessRawProps[];
-  button?: string;
+  ctaLink?: ILink;
 };
 
 type Props = React.HTMLAttributes<HTMLElement> &
@@ -22,7 +23,7 @@ export const Recomposition = ({
   header,
   text,
   steps,
-  button,
+  ctaLink,
   className,
   ref,
   ...props
@@ -47,12 +48,16 @@ export const Recomposition = ({
           />
         ))}
       </div>
-
-      <Button
-        className="recomposition__button"
-        text={button}
-        icon="arrow-right"
-      />
+      {ctaLink && (
+        <Button
+          className="recomposition__button"
+          text={ctaLink?.name}
+          href={ctaLink.href}
+          tag="a"
+          icon="arrow-right"
+          isExternal
+        />
+      )}
     </div>
   );
 };

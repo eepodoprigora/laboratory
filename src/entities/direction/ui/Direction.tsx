@@ -32,19 +32,18 @@ export const Direction = ({
             split="words"
           />
           <div className="direction__buttons">
-            <Button
+            {/* <Button
               className="direction__button"
               text={button}
               icon="arrow-right"
-            />
+            /> */}
             <Button
               className="direction__button"
               icon="arrow-right"
-              variant="secondary"
+              // variant="secondary"
               href={link.href}
               tag="a"
-              target="_blank"
-              rel="noopener noreferrer">
+              isExternal>
               {link.name}
             </Button>
           </div>

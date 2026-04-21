@@ -1,188 +1,120 @@
-import { clampMin } from "@/shared/lib/strings";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from 'react';
 
-type Params = {
-    rootRef: RefObject<HTMLElement | null>;
-    slidesRef: RefObject<HTMLElement[]>;
-    slidesCount: number;
-};
-
-const getClosestSlideIndex = (
-    slides: HTMLElement[],
-    slidesCount: number,
-    progress: number,
-) => {
-    if (!slidesCount || slides.length !== slidesCount) {
-        return 0;
-    }
-
-    let closestIndex = 0;
-    let closestDistance = Number.POSITIVE_INFINITY;
-
-    slides.forEach((slide, index) => {
-        const center = slide.offsetLeft + slide.offsetWidth / 2 + progress;
-        const distance = Math.abs(center);
-
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = index;
-        }
-    });
-
-    return closestIndex;
+type Props = {
+    gap: number;
+    slideCount: number;
+    visible: number;
+    initialIndex?: number;
+    threshold?: number;
+    isNeeded: boolean;
+    wrapperAsideOffset?: number;
 };
 
 export const useSlider = ({
-    rootRef,
-    slidesRef,
-    slidesCount,
-}: Params) => {
-    const [progress, setProgress] = useState(0);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [minTranslate, setMinTranslate] = useState(0);
-    const [maxTranslate, setMaxTranslate] = useState(0);
+    gap,
+    slideCount,
+    visible,
+    initialIndex = 0,
+    threshold = 40,
+    wrapperAsideOffset = 16,
+    isNeeded,
+}: Props) => {
+    const viewportRef = useRef<HTMLDivElement | null>(null);
+    const [viewportWidth, setViewportWidth] = useState(0);
+    const [index, setIndex] = useState(initialIndex);
+    const startX = useRef(0);
 
-    const currentProgressRef = useRef(0);
-    const targetProgressRef = useRef(0);
-    const touchStartYRef = useRef(0);
-    const targetStartRef = useRef(0);
+    useLayoutEffect(() => {
+        const element = viewportRef.current;
 
-    useEffect(() => {
-        const updateSizes = () => {
-            const slides = slidesRef.current;
-
-            if (!slidesCount || slides.length !== slidesCount) {
-                return;
-            }
-
-            const firstSlide = slides[0];
-            const lastSlide = slides[slides.length - 1];
-
-            if (!firstSlide || !lastSlide) {
-                return;
-            }
-
-            const firstCenter = firstSlide.offsetLeft + firstSlide.offsetWidth / 2;
-            const lastCenter = lastSlide.offsetLeft + lastSlide.offsetWidth / 2;
-
-            const nextMaxTranslate = -firstCenter;
-            const nextMinTranslate = -lastCenter;
-
-            setMaxTranslate(nextMaxTranslate);
-            setMinTranslate(nextMinTranslate);
-
-            const nextProgress = clampMin(
-                targetProgressRef.current || nextMaxTranslate,
-                nextMinTranslate,
-                nextMaxTranslate,
-            );
-
-            targetProgressRef.current = nextProgress;
-            currentProgressRef.current = nextProgress;
-            setProgress(nextProgress);
-            setCurrentIndex(getClosestSlideIndex(slides, slidesCount, nextProgress));
-        };
-
-        updateSizes();
-        window.addEventListener("resize", updateSizes);
-
-        return () => {
-            window.removeEventListener("resize", updateSizes);
-        };
-    }, [slidesRef, slidesCount]);
-
-    useEffect(() => {
-        let frameId = 0;
-
-        const animate = () => {
-            const slides = slidesRef.current;
-
-            currentProgressRef.current +=
-                (targetProgressRef.current - currentProgressRef.current) * 0.12;
-
-            if (Math.abs(targetProgressRef.current - currentProgressRef.current) < 0.1) {
-                currentProgressRef.current = targetProgressRef.current;
-            }
-
-            setProgress(currentProgressRef.current);
-
-            if (slidesCount && slides.length === slidesCount) {
-                setCurrentIndex(
-                    getClosestSlideIndex(
-                        slides,
-                        slidesCount,
-                        currentProgressRef.current,
-                    ),
-                );
-            }
-
-            frameId = window.requestAnimationFrame(animate);
-        };
-
-        frameId = window.requestAnimationFrame(animate);
-
-        return () => {
-            window.cancelAnimationFrame(frameId);
-        };
-    }, [slidesRef, slidesCount]);
-
-    useEffect(() => {
-        const root = rootRef.current;
-
-        if (!root) {
-            return undefined;
+        if (!isNeeded || !element) {
+            return;
         }
 
-        const updateTarget = (nextProgress: number) => {
-            targetProgressRef.current = clampMin(
-                nextProgress,
-                minTranslate,
-                maxTranslate,
-            );
-        };
+        setViewportWidth(element.getBoundingClientRect().width);
 
-        const handleWheel = (event: WheelEvent) => {
-            updateTarget(targetProgressRef.current - event.deltaY * 0.9);
-        };
+        const resizeObserver = new ResizeObserver((entries) => {
+            const width = entries[0]?.contentRect.width;
 
-        const handleTouchStart = (event: TouchEvent) => {
-            const touch = event.touches[0];
-
-            if (!touch) {
-                return;
+            if (typeof width === 'number') {
+                setViewportWidth(width);
             }
+        });
 
-            touchStartYRef.current = touch.clientY;
-            targetStartRef.current = targetProgressRef.current;
-        };
-
-        const handleTouchMove = (event: TouchEvent) => {
-            const touch = event.touches[0];
-
-            if (!touch) {
-                return;
-            }
-
-            const deltaY = touch.clientY - touchStartYRef.current;
-
-            updateTarget(targetStartRef.current + deltaY * 1.1);
-
-            event.preventDefault();
-        };
-
-        window.addEventListener("wheel", handleWheel, { passive: true });
-        root.addEventListener("touchstart", handleTouchStart, { passive: true });
-        root.addEventListener("touchmove", handleTouchMove, { passive: false });
+        resizeObserver.observe(element);
 
         return () => {
-            window.removeEventListener("wheel", handleWheel);
-            root.removeEventListener("touchstart", handleTouchStart);
-            root.removeEventListener("touchmove", handleTouchMove);
+            resizeObserver.disconnect();
         };
-    }, [rootRef, minTranslate, maxTranslate]);
+    }, [isNeeded]);
+
+    const enabled = isNeeded && slideCount > 0 && visible > 0;
+    const totalGaps = enabled ? gap * (visible - 1) : 0;
+    const slideWidth = enabled
+        ? Math.max(0, (viewportWidth - totalGaps - wrapperAsideOffset * 2) / visible)
+        : 0;
+    const step = enabled ? slideWidth + gap : 0;
+    const maxIndex = enabled ? Math.max(0, slideCount - visible) : 0;
+
+    const clamp = (value: number) => {
+        return Math.min(maxIndex, Math.max(0, value));
+    };
+
+    const setNext = () => {
+        if (!enabled) {
+            return;
+        }
+
+        setIndex((currentIndex) => clamp(currentIndex + 1));
+    };
+
+    const setPrev = () => {
+        if (!enabled) {
+            return;
+        }
+
+        setIndex((currentIndex) => clamp(currentIndex - 1));
+    };
+
+    const onTouchStart = (event: React.TouchEvent) => {
+        if (!enabled) {
+            return;
+        }
+
+        startX.current = event.touches[0].clientX;
+    };
+
+    const onTouchEnd = (event: React.TouchEvent) => {
+        if (!enabled) {
+            return;
+        }
+
+        const endX = event.changedTouches[0].clientX;
+        const deltaX = endX - startX.current;
+
+        if (deltaX <= -threshold) {
+            setNext();
+            return;
+        }
+
+        if (deltaX >= threshold) {
+            setPrev();
+        }
+    };
+
+    const translateX = enabled ? -(index * step) : 0;
 
     return {
-        progress,
-        currentIndex,
+        viewportRef,
+        slideWidth,
+        translateX,
+        handlers: {
+            onTouchStart,
+            onTouchEnd,
+        },
+        canPrev: enabled && index > 0,
+        canNext: enabled && index < maxIndex,
+        setPrev,
+        setNext,
     };
 };

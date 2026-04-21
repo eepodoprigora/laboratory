@@ -1,43 +1,55 @@
+import { useScrollToSection } from "@/shared/lib/use-scroll-to-section";
+import { useHeaderColorStore } from "@/shared/model/header-color";
 import { ILink, ImageShape } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
-import Link from "@/shared/ui/Link";
 import classNames from "classnames";
-import Image from "next/image";
 
 type RawProps = {
   logo?: ImageShape | null;
   menuLinks?: ILink[];
-  button?: string;
+  ctaLink?: ILink;
 };
 
 type Props = React.HTMLAttributes<HTMLElement> & RawProps;
 
-export const Header = ({ logo, menuLinks, button }: Props) => {
+export const Header = ({ logo, menuLinks, ctaLink }: Props) => {
+  const headerClass = useHeaderColorStore((s) => s.headerClass);
+
+  const { scrollToSection } = useScrollToSection({
+    offset: 50,
+  });
   return (
-    <header className={classNames("header")}>
+    <header className={classNames("header", headerClass)}>
       <div className="wrapper header__wrapper">
         {logo && (
           <a href={"/"} className="header__logo text-xl">
-            <Image
-              src={logo.src}
-              fill
-              alt={logo.alt ?? "Лаборатория стройности"}
-              title={logo.title}
-            />
+            <span className="header__logo-image"></span>
           </a>
         )}
         {menuLinks && (
           <ul className="list-unstyled header__list">
             {menuLinks.map((item) => (
               <li key={item.href} className="header__list-item">
-                <Link className="link" href={item.href}>
-                  {item.name}
-                </Link>
+                <button
+                  className="link"
+                  onClick={() => scrollToSection(item.href)}>
+                  <span className="link__container">{item.name}</span>
+                </button>
               </li>
             ))}
           </ul>
         )}
-        <Button className="header__button" text={button} icon="arrow-right" />
+        {ctaLink && (
+          <Button
+            className="header__button"
+            text={ctaLink?.name}
+            tag="a"
+            icon="arrow-right"
+            href={ctaLink.href}
+            variant="header"
+            isExternal
+          />
+        )}
       </div>
     </header>
   );

@@ -16,15 +16,16 @@
 }
 
 .directions__card {
-  --height: 800px;
+  --height: 540x;
   --offset: 265px;
 
   position: sticky;
   min-height: var(--height);
   top: calc(var(--offset) * var(--index));
+  display: flex;
 
-  @include desktop-tablet {
-    --height: 540px;
+  @include desktop-large {
+    --height: 800px;
   }
 
   @include mobile {

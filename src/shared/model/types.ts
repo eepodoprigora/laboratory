@@ -22,7 +22,7 @@ export type CommonPageProps = AppCommonPageData & {
     header: {
         logo: ImageShape | null;
         menuLinks: ILink[];
-        button: string;
+        ctaLink: ILink;
     }
 
 };

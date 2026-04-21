@@ -43,12 +43,14 @@ export const Advantage = ({
             text={header}
             split="letters"
             delay={index * 0.1}
+            once
           />
           <TextAnimation
             className="advantage__description text-m"
             text={description}
             split="words"
             delay={index * 0.2}
+            once
           />
         </div>
       </div>

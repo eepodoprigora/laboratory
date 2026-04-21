@@ -4,11 +4,12 @@ import Link from "@/shared/ui/Link";
 
 type BaseProps = {
   tag?: "button" | "a" | typeof Link;
-  variant?: "primary" | "secondary" | "primary-light";
+  variant?: "primary" | "secondary" | "primary-light" | "header";
   text?: string;
   icon?: "arrow-right" | "arrow-left" | "menu" | "reset";
   iconRepeat?: boolean;
   isActiveTab?: boolean;
+  isExternal?: boolean;
   className?: string;
   children?: React.ReactNode;
 };
@@ -44,6 +45,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
       text,
       icon,
       children,
+      isExternal,
       ...props
     },
     ref,
@@ -54,9 +56,17 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
         "btn--primary": variant === "primary",
         "btn--secondary": variant === "secondary",
         "btn--primary-light": variant === "primary-light",
+        "btn--header": variant === "header",
       },
       className,
     );
+
+    const externalProps = isExternal
+      ? {
+          target: "_blank",
+          rel: "noopener noreferrer",
+        }
+      : {};
 
     const content = (
       <>
@@ -81,6 +91,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
       return (
         <a
           {...anchorProps}
+          {...externalProps}
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={componentClassName}>
           {content}
@@ -94,6 +105,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
       return (
         <Link
           {...linkProps}
+          {...externalProps}
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={componentClassName}>
           {content}

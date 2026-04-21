@@ -1,6 +1,7 @@
 
 import { AppCommonPageData } from '@/shared/api/types';
 import { CommonPageProps } from '@/shared/model/types';
+import { APPLY_GENERAL } from '@/shared/сonfig/const';
 
 
 export const getCommonPageProps = async (): Promise<Omit<CommonPageProps, 'breadcrumbs' | keyof AppCommonPageData>> => {
@@ -17,10 +18,11 @@ export const getCommonPageProps = async (): Promise<Omit<CommonPageProps, 'bread
                 { name: 'Рекомпозиция', href: 'recomposition' },
                 { name: 'Направления', href: 'directions' },
                 { name: 'Отзывы', href: 'reviews' },
+                { name: 'Вопросы', href: 'faq' },
                 { name: 'Контакты', href: 'contacts' },
             ],
 
-            button: 'Записаться'
+            ctaLink: { name: 'Записаться', href: APPLY_GENERAL }
         }
     };
 };

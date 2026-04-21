@@ -42,10 +42,14 @@ html {
 .section {
   --pv: 100px;
   padding: var(--pv) 0;
+  @include desktop-tablet {
+    --pv: 80px;
+  }
 }
 
 .img {
   object-fit: cover;
+  user-select: none;
 }
 
 .block__header {

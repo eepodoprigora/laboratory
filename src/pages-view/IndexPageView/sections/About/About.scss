@@ -2,26 +2,45 @@
 @use "@/application/css/utils/mixins" as *;
 
 .about {
-  --pv: 120px;
   --image-h: 500px;
   --text-h: 500px;
-  padding-bottom: var(--pv);
+  padding-top: 0;
+
+  @include tablet {
+    --text-h: 420px;
+  }
+
+  @include desktop-large {
+    --image-h: 700px;
+  }
 }
 
 .about__top {
+  --pv: 120px;
   height: calc(var(--text-h) + var(--image-h));
+  --mb: 80px;
+  margin-bottom: var(--mb);
 }
 
 .about__top-text {
   --mb: 80px;
   @include grid-offset(margin-left, 4);
-  @include grid-offset(margin-right, 5);
+  @include grid-offset(margin-right, 4);
   position: sticky;
   padding: var(--pv) 0;
   top: 0;
   z-index: 2;
   color: white;
   mix-blend-mode: difference;
+
+  @include desktop-tablet {
+    @include grid-offset(margin-left, 2);
+    @include grid-offset(margin-right, 2);
+  }
+  @include desktop-large {
+    @include grid-offset(margin-left, 5);
+    @include grid-offset(margin-right, 5);
+  }
 }
 
 .about__main-image-container {
@@ -29,17 +48,52 @@
   @include grid-columns(5);
   margin: 0 auto;
   height: var(--image-h);
-}
 
-.about__top {
-  --mb: 80px;
-  margin-bottom: var(--mb);
+  @include desktop-tablet {
+    @include grid-columns(6);
+  }
+  @include tablet {
+    @include grid-columns(8);
+  }
 }
 
 .about__advantages {
   --advantages-count: 4;
   --gap: 20px;
   gap: var(--gap);
+
+  @include tablet {
+    overflow: hidden;
+  }
+}
+
+.about__advantages-viewport {
+  width: 100%;
+  padding: 0 var(--offset-x);
+
+  @include tablet {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  @include mobile {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+}
+
+.about__advantages-track {
+  width: 100%;
+
+  @include tablet {
+    transition: transform $app-default-duration $app-default-easing;
+    will-change: transform;
+  }
+
+  @include mobile {
+    transition: transform $app-default-duration $app-default-easing;
+    will-change: transform;
+  }
 }
 
 .about__advantages-list {
@@ -56,8 +110,18 @@
     );
   min-width: 0;
   display: flex;
+
+  @include tablet {
+    flex: 0 0 auto;
+  }
 }
 
 .about__advantage {
   width: 100%;
+}
+
+.about__slider-buttons {
+  --pt: 40px;
+  padding-top: var(--pt);
+  justify-content: center;
 }

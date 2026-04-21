@@ -85,7 +85,7 @@ export const ResultsSlider = ({
           ))}
         </div>
 
-        <div className="results-slider__buttons">
+        <div className="results-slider__buttons slider__buttons">
           <Button
             icon="arrow-left"
             aria-label="Предыдущий слайд"

@@ -37,10 +37,13 @@
   @include grid-offset(padding-left, 2);
 }
 
-.results-slider__buttons {
+.slider__buttons {
   --gap: 10px;
   display: flex;
   gap: var(--gap);
+}
+
+.results-slider__buttons {
   position: absolute;
   top: 0;
   @include grid-offset(margin-left, 10);

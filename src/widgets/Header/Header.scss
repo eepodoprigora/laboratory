@@ -11,6 +11,28 @@
   z-index: 10;
   background-color: rgba($white, 0.5);
   backdrop-filter: blur(10px);
+  transition:
+    color $app-default-duration $app-default-easing,
+    background-color $app-default-duration $app-default-easing;
+}
+
+.header--dark {
+  background-color: transparent;
+  color: $white;
+
+  .header__logo-image {
+    background-color: $white;
+  }
+}
+
+.header__logo-image {
+  position: absolute;
+  inset: 0;
+  mask-image: url("/static/images/svg/logo-min.svg");
+  mask-size: cover;
+
+  background-color: $black;
+  transition: background-color $app-default-duration $app-default-easing;
 }
 
 .header__logo {
@@ -31,6 +53,10 @@
 
 .header__list {
   @include flex-center();
+
+  @include tablet {
+    display: none;
+  }
 }
 
 .header__list-item {

@@ -9,21 +9,59 @@
   align-items: center;
 }
 
-.hero__image {
+.hero__wrapper {
+  width: 100%;
+  z-index: 3;
+
+  @include tablet {
+    position: absolute;
+    inset: 0;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    @include flex-center(column, flex-start, center);
+  }
+}
+
+.hero__image-container {
   position: absolute;
   inset: 0;
   width: 100%;
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: rgba($black, 0.3);
+  }
 }
 
 .hero__text-block {
   position: relative;
   z-index: 2;
-  @include grid-columns(5.5);
+  @include grid-columns(7);
   color: $white;
+
+  @include desktop-tablet {
+    @include grid-columns(8);
+  }
+
+  @include tablet {
+    margin: 0 auto;
+    @include grid-columns(15);
+    text-align: center;
+  }
 }
 
 .hero__button {
   --b: 70px;
   position: absolute;
   bottom: var(--b);
+
+  @include tablet {
+    --mt: 50px;
+    margin-top: var(--mt);
+    position: relative;
+    bottom: unset;
+  }
 }

@@ -6,6 +6,7 @@ import IndexPageView, {
 } from "@/pages-view/IndexPageView";
 import { CommonPageProps } from "@/shared/model/types";
 import { tp } from "@/shared/lib/formatting";
+import { APPLY_GENERAL, DISCUSS_LINK } from "@/shared/сonfig/const";
 
 const IndexPage = ({
   h1,
@@ -51,15 +52,15 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       breadcrumbs: [],
       h1: "Лаборатория стройности",
       heroSectionData: {
-        image: { src: "/static/images/hero_1.jpg" },
+        image: { src: "/static/images/hero_4.png" },
         text: tp(
           "Силовые, танцы, йога и массаж. Камерный формат, персональный подход. Флагманское направление — рекомпозиция тела.",
         ),
-        button: tp("Пробное занятие"),
+        ctaLink: { name: tp("Пробное занятие"), href: APPLY_GENERAL },
       },
       aboutSectionData: {
         text: tp(
-          "Привет, я Настя — тренер с опытом более 12 лет и создатель этой студии. Мы создали пространство, где результат строится на профессионализме, эстетике и внимании к каждой детали.",
+          "Привет, я Кузнецова Анастасия — тренер с опытом более 12 лет и создатель этой студии. Мы создали пространство, где результат строится на профессионализме, эстетике и внимании к каждой детали.",
         ),
         mainImage: { src: "/static/images/about_main.jpg" },
         button: tp("Узнать больше"),
@@ -77,7 +78,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
             image: { src: "/static/images/advantages/adv_2.jpg" },
             header: tp("Тренер-основательница"),
             description: tp(
-              "Почти все силовые ведёт сама — сильная техника и контроль.",
+              "Все силовые ведёт сама — сильная техника и контроль.",
             ),
           },
           {
@@ -162,7 +163,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 <p>Так результат не становится временной историей — он закрепляется и остаётся с тобой надолго.</p> `),
           },
         ],
-        button: tp("Обсудить цели"),
+        ctaLink: { name: tp("Обсудить цели"), href: DISCUSS_LINK },
       },
       directionsSectionData: {
         header: tp("Движение в своём ритме"),

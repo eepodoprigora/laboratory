@@ -18,8 +18,11 @@
   --h: 500px;
   height: var(--h);
   position: relative;
-  @include grid-columns(5);
-  @include grid-offset(margin-left, 2);
+  @include grid-columns(7);
+
+  @include desktop-large {
+    --h: 700px;
+  }
 }
 
 .chess__content {
@@ -30,6 +33,11 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+
+  @include tablet {
+    @include grid-offset(margin-left, 2);
+    @include grid-offset(padding-right, 1);
+  }
 }
 
 .chess__header {
@@ -41,12 +49,13 @@
 
 .chess__order {
   --top: 50px;
-  --right: 100px;
+
   position: absolute;
   top: var(--top);
+  right: 0;
   opacity: 0.7;
   color: $green-1;
-  right: var(--right);
+  @include grid-offset(margin-left, 1);
 }
 
 .chess_image-right {
@@ -57,13 +66,8 @@
   .chess__content {
     margin-left: 0;
     padding-right: 0;
-    @include grid-offset(margin-right, 4);
-    @include grid-offset(padding-left, 2);
-  }
-
-  .chess__image-container {
-    margin-left: 0;
-    @include grid-offset(margin-right, 2);
+    @include grid-offset(margin-right, 5);
+    @include grid-offset(padding-left, 1);
   }
 
   .chess__order {

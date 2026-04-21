@@ -8,10 +8,14 @@
 }
 
 .advantage__image-container {
-  --ratio: 720 / 700;
+  --h: 310px;
   position: relative;
   width: 100%;
-  aspect-ratio: var(--ratio);
+  height: var(--h);
+
+  @include desktop-large {
+    --h: 500px;
+  }
 }
 
 .advantage__bottom {
@@ -31,4 +35,10 @@
   --mb: 15px;
   margin-bottom: var(--mb);
   font-weight: 600;
+}
+
+.advantage__description {
+  @include desktop-large {
+    width: 70%;
+  }
 }
