@@ -186,7 +186,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
               "Индивидуальные программы для всего тела и с акцентом на ягодицы. Работаем с техникой, прогрессией и нагрузкой, чтобы вы получали реальный визуальный результат: подтянутое тело, рельеф и силу без случайных тренировок.",
             ),
             button: tp("Узнать подробнее"),
-            link: { href: "#", name: tp("Записаться") },
+            link: { href: APPLY_GENERAL, name: tp("Записаться") },
           },
           {
             id: 2,
@@ -196,7 +196,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
               "Практика для гибкости, осанки и восстановления. Помогаем снять зажимы, улучшить подвижность и почувствовать тело. Подходит как для расслабления после нагрузок, так и для мягкой работы с телом.",
             ),
             button: tp("Узнать подробнее"),
-            link: { href: "#", name: tp("Записаться") },
+            link: { href: APPLY_GENERAL, name: tp("Записаться") },
           },
           {
             id: 3,
@@ -206,7 +206,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
               "Общий и зональный массаж под ваш запрос: спина, шея, ноги или всё тело. Снимаем напряжение, улучшаем кровообращение и ускоряем восстановление после тренировок, чтобы тело выглядело и чувствовало себя лучше.",
             ),
             button: tp("Узнать подробнее"),
-            link: { href: "#", name: tp("Записаться") },
+            link: { href: APPLY_GENERAL, name: tp("Записаться") },
           },
           {
             id: 4,
@@ -216,7 +216,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
               "Twerk и High Heels — направления, которые раскрывают пластику и уверенность. Работаем с техникой, движением и подачей, чтобы вы чувствовали себя свободно, красиво и уверенно в своём теле.",
             ),
             button: tp("Узнать подробнее"),
-            link: { href: "#", name: tp("Записаться") },
+            link: { href: APPLY_GENERAL, name: tp("Записаться") },
           },
         ],
       },
@@ -226,8 +226,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
         text: tp(
           "Реальные отзывы, заметные изменения в теле, самочувствии и уверенности в себе.",
         ),
-        button1: tp("Обсудить цели"),
-        button2: tp("Записаться"),
+        button1: { name: tp("Обсудить цели"), href: DISCUSS_LINK },
+        button2: { name: tp("Записаться"), href: APPLY_GENERAL },
         slides: [
           {
             id: 1,

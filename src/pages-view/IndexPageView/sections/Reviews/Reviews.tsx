@@ -1,8 +1,8 @@
 import { IResult } from "@/entities/result";
 import { IReview } from "@/entities/review";
 import { mergeRefs } from "@/shared/lib/merge-refs";
+import { ILink } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
-// import Button from "@/shared/ui/Button";
 import { SectionTop } from "@/shared/ui/SectionTop";
 import { Marquee } from "@/widgets/Marquee";
 import { ResultsSlider } from "@/widgets/ResultsSlider";
@@ -14,8 +14,8 @@ export type RawProps = {
   preHeader?: string;
   header: string;
   text: string;
-  button1?: string;
-  button2?: string;
+  button1?: ILink;
+  button2?: ILink;
   slides: IResult[];
   reviews: IReview[];
 };
@@ -50,13 +50,25 @@ export const Reviews = ({
       <ResultsSlider slides={slides} />
       <Marquee items={reviews} />
       <div className="reviews__buttons">
-        <Button className="reviews__button" text={button1} icon="arrow-right" />
-        <Button
-          className="reviews__button"
-          variant="secondary"
-          text={button2}
-          icon="arrow-right"
-        />
+        {button1 && (
+          <Button
+            className="reviews__button"
+            text={button1.name}
+            icon="arrow-right"
+            tag="a"
+            isExternal
+          />
+        )}
+        {button2 && (
+          <Button
+            className="reviews__button"
+            variant="secondary"
+            text={button2.name}
+            icon="arrow-right"
+            tag="a"
+            isExternal
+          />
+        )}
       </div>
     </div>
   );

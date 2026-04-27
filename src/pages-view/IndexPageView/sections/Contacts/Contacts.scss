@@ -2,12 +2,12 @@
 @use "@/application/css/utils/mixins" as *;
 
 .contacts__map {
+  --h: 700px;
   width: 50%;
-  height: vh(100);
+  height: var(--h);
 
   @include tablet {
     --h: 550px;
-    height: var(--h);
     width: 100%;
   }
 }
@@ -25,7 +25,7 @@
 }
 
 .contacts__info {
-  --pt: 240px;
+  --pt: 140px;
   width: 50%;
   --pb: 140px;
 
@@ -33,7 +33,7 @@
   padding-bottom: var(--pb);
 
   @include desktop-tablet {
-    --pt: 160px;
+    --pt: 100px;
     --pb: 90px;
   }
 

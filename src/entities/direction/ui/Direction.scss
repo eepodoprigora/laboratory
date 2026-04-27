@@ -72,6 +72,7 @@
 
 .direction__button {
   --mr: 15px;
+  cursor: pointer;
   &:not(:last-child) {
     margin-right: var(--mr);
   }
