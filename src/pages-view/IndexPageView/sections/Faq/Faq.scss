@@ -45,10 +45,10 @@
   --pt: 80px;
   @include grid-columns(12);
   padding-top: var(--pt);
+  margin: 0 auto;
 
   @include tablet {
     @include grid-columns(15);
-    margin: 0 auto;
   }
 
   @include mobile {
