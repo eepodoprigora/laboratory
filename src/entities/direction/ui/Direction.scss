@@ -55,11 +55,11 @@
 }
 
 .direction__buttons {
-  --b: 120px;
+  --b: 200px;
   position: absolute;
   bottom: var(--b);
 
-  @include desktop-large {
+  @include desktop-tablet {
     --b: 150px;
   }
 
@@ -78,8 +78,8 @@
 }
 
 .direction__header {
-  --mb: 145px;
-
+  --mb: 125px;
+  color: $green-1;
   margin-bottom: var(--mb);
 
   @include desktop-tablet {
