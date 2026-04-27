@@ -8,6 +8,7 @@ import { useRef } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 export type RawProps = {
+  preHeader?: string;
   header: string;
   text: string;
   items: IDirection[];
@@ -18,6 +19,7 @@ type Props = React.HTMLAttributes<HTMLElement> & {
 } & RawProps;
 
 export const Directions = ({
+  preHeader,
   header,
   text,
   items = [],
@@ -52,8 +54,7 @@ export const Directions = ({
       className={classNames("directions section", className)}
       ref={mergeRefs([ref, localRef])}>
       <div className="wrapper directions__wrapper">
-        <div className="hero__main"></div>
-        <SectionTop header={header} text={text} />
+        <SectionTop header={header} text={text} preHeader={preHeader} />
         {items.length > 0 && (
           <m.ul
             className="directions__cards list-unstyled"

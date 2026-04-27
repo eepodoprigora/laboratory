@@ -5,11 +5,25 @@
   --pt: 80px;
   padding-top: var(--pt);
   @include grid-offset(padding-left, 3);
-  transform: translate(3px, 20px);
-  transition: transform $app-medium-duration $app-default-easing;
+  transform: translate(0, 10px);
+  transition:
+    transform $app-medium-duration $app-default-easing,
+    opacity $app-medium-duration $app-default-easing;
+  opacity: 0;
 
   &.is-active {
     transform: translate(0, 0);
+    transition-delay: 0.2s;
+    opacity: 1;
+  }
+
+  @include desktop-tablet {
+    @include grid-offset(padding-left, 2);
+  }
+
+  @include mobile {
+    --pt: 120px;
+    padding-left: 0;
   }
 }
 

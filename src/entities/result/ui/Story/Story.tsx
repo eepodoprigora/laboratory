@@ -26,8 +26,8 @@ export const Story = ({
       className={classNames("story", className, {
         "is-active": isActive,
       })}>
-      <div className="wrapper story__wrapper">
-        <TextAnimation className="story__header text-descr" text={header} />
+      <div className="story__wrapper">
+        <TextAnimation className="story__header h5" text={header} />
         <Reveal>
           <div
             className="wysiwyg text-m"

@@ -14,6 +14,20 @@
 
   &:nth-child(3n) {
     @include grid-columns(5);
+    @include tablet {
+      @include grid-columns(7);
+    }
+    @include mobile {
+      @include grid-columns(18);
+    }
+  }
+
+  @include tablet {
+    @include grid-columns(6);
+  }
+
+  @include mobile {
+    @include grid-columns(15);
   }
 }
 

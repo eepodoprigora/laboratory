@@ -6,6 +6,10 @@
   --pt: 80px;
   padding-top: var(--pt);
   width: 100%;
+
+  @include mobile {
+    --h: 850px;
+  }
 }
 
 .results-slider__wrapper {
@@ -35,6 +39,17 @@
   display: flex;
   @include grid-offset(padding-right, 2);
   @include grid-offset(padding-left, 2);
+
+  @include tablet {
+    @include grid-offset(padding-right, 1);
+    @include grid-offset(padding-left, 1);
+  }
+
+  @include mobile {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .slider__buttons {
@@ -48,4 +63,17 @@
   top: 0;
   @include grid-offset(margin-left, 10);
   pointer-events: none;
+
+  @include desktop-tablet {
+    @include grid-offset(margin-left, 9);
+  }
+
+  @include mobile {
+    --t: 550px;
+    top: var(--t);
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 0;
+    z-index: 5;
+  }
 }

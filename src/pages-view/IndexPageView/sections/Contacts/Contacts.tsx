@@ -42,21 +42,17 @@ export const Contacts = ({
       {...props}
       className={classNames("contacts section", className)}
       ref={mergeRefs([ref, rootRef])}>
-      <div className="wrapper">
-        <TextAnimation
-          className="contacts__top-text block__header"
-          text={header}
-          split="words"
-        />
-      </div>
       <div className="contacts__main">
         <div className="contacts__info">
           <div className="wrapper">
+            <TextAnimation
+              className="contacts__preheader block__preheader"
+              text={header}
+              split="words"
+            />
             {description && (
               <Reveal>
-                <div className="contacts__description text-l">
-                  {description}
-                </div>
+                <div className="contacts__header h3">{description}</div>
               </Reveal>
             )}
             {workingHours && (

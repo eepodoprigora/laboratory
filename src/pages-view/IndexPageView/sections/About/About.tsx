@@ -4,6 +4,7 @@ import { useMounted } from "@/shared/lib/use-mounted";
 import { useSlider } from "@/shared/lib/use-slider";
 import { ImageShape } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
+import { SectionTop } from "@/shared/ui/SectionTop";
 import { TextAnimation } from "@/shared/ui/TextAnimation";
 import classNames from "classnames";
 import Image from "next/image";
@@ -11,6 +12,9 @@ import React, { useRef } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 export type RawProps = {
+  preHeader?: string;
+  header: string;
+  description: string;
   mainImage: ImageShape | null;
   advantages: IAdvantage[];
   text: string;
@@ -23,6 +27,9 @@ type Props = React.HTMLAttributes<HTMLElement> &
   };
 
 export const About = ({
+  preHeader,
+  header,
+  description,
   mainImage,
   advantages,
   button,
@@ -44,7 +51,7 @@ export const About = ({
   const visibleSlides = (() => {
     switch (true) {
       case isMobile:
-        return 1.5;
+        return 1.1;
       case isSmallTablet:
         return 2.2;
       case isTablet:
@@ -85,7 +92,7 @@ export const About = ({
       <div className="about__top">
         <div className="wrapper">
           <TextAnimation
-            className="about__top-text h3"
+            className="about__top-text h4"
             text={text}
             split="words"
           />
@@ -104,6 +111,8 @@ export const About = ({
         </div>
       </div>
 
+      <SectionTop preHeader={preHeader} header={header} text={description} />
+
       <div className="about__bottom">
         <div
           className={classNames("about__advantages", {
@@ -121,7 +130,7 @@ export const About = ({
             <div
               className="about__advantages-track"
               style={
-                isSliderNeeded
+                isSliderNeeded && mounted
                   ? {
                       transform: `translate3d(${translateX}px, 0, 0)`,
                     }
@@ -133,7 +142,7 @@ export const About = ({
                     key={item.id}
                     className="about__advantages-item"
                     style={
-                      isSliderNeeded
+                      isSliderNeeded && mounted
                         ? {
                             width: `${slideWidth}px`,
                             minWidth: `${slideWidth}px`,
@@ -153,7 +162,7 @@ export const About = ({
             </div>
           </div>
 
-          {isSliderNeeded && advantages.length > visibleSlides && (
+          {isSliderNeeded && mounted && advantages.length > visibleSlides && (
             <div className="about__slider-buttons slider__buttons">
               <Button
                 icon="arrow-left"

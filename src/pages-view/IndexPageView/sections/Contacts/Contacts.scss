@@ -4,10 +4,20 @@
 .contacts__map {
   width: 50%;
   height: vh(100);
+
+  @include tablet {
+    --h: 550px;
+    height: var(--h);
+    width: 100%;
+  }
 }
 
 .contacts__main {
   display: flex;
+
+  @include tablet {
+    flex-direction: column;
+  }
 }
 
 .contacts__top-text {
@@ -15,14 +25,39 @@
 }
 
 .contacts__info {
+  --pt: 240px;
   width: 50%;
-  @include flex-center(column, center, flex-start);
+  --pb: 140px;
+
+  padding-top: var(--pt);
+  padding-bottom: var(--pb);
+
+  @include desktop-tablet {
+    --pt: 160px;
+    --pb: 90px;
+  }
+
+  @include tablet {
+    --pt: 0;
+    --pb: 80px;
+    width: 100%;
+  }
 }
 
-.contacts__description {
+.contacts__header {
   --mb: 80px;
   margin-bottom: var(--mb);
-  width: 60%;
+  width: 80%;
+  color: $green-1;
+
+  @include tablet {
+    width: 60%;
+  }
+
+  @include mobile {
+    width: 100%;
+    --mb: 60px;
+  }
 }
 
 .contacts__working,
@@ -84,4 +119,8 @@
       }
     }
   }
+}
+
+.contacts__preheader {
+  text-align: left;
 }

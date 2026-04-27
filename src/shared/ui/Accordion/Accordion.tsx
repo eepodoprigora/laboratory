@@ -85,7 +85,7 @@ export const Accordion = ({
                   aria-expanded={isActive}
                   aria-controls={item.panelId}
                   onClick={() => handleToggle(item.id)}>
-                  <span className="accordion__title text-m">{item.title}</span>
+                  <span className="accordion__title text-l">{item.title}</span>
                   <span className="accordion__icon text-m" aria-hidden="true" />
                 </button>
               </h3>

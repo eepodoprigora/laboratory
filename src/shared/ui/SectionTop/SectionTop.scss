@@ -1,0 +1,49 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/layout/typography" as *;
+
+.block__preheader {
+  --mb: 32px;
+  @extend %text-descr-tp;
+
+  text-align: center;
+  text-transform: uppercase;
+  // color: $green-1;
+  opacity: 0.8;
+
+  &:not(:last-child) {
+    margin-bottom: var(--mb);
+  }
+  @include desktop-tablet {
+    --mb: 20px;
+  }
+}
+
+.block__header {
+  --mb: 40px;
+  text-transform: uppercase;
+  color: $green-1;
+  margin: 0 auto;
+  margin-bottom: var(--mb);
+  @extend %h2-tp;
+  max-width: 70%;
+  text-align: center;
+
+  @include tablet {
+    max-width: 100%;
+  }
+}
+
+.block__descr {
+  @include grid-columns(10);
+  @extend %text-l;
+  text-align: center;
+
+  @include tablet {
+    width: 70%;
+  }
+
+  @include mobile {
+    width: 90%;
+  }
+}

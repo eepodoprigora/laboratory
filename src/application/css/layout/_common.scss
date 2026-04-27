@@ -45,6 +45,10 @@ html {
   @include desktop-tablet {
     --pv: 80px;
   }
+
+  @include tablet {
+    --pv: 60px;
+  }
 }
 
 .img {
@@ -52,15 +56,21 @@ html {
   user-select: none;
 }
 
-.block__header {
-  --mb: 40px;
-  text-transform: uppercase;
-  color: $green-1;
-  margin-bottom: var(--mb);
-  @extend %text-descr-tp;
+.section-top__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.block__descr {
-  @include grid-columns(10);
-  @extend %text-l;
+.mobile-only {
+  display: none;
+  @include mobile {
+    display: block;
+  }
+}
+
+.desktop-only {
+  @include mobile {
+    display: none;
+  }
 }

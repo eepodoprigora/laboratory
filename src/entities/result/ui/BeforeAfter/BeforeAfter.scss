@@ -14,13 +14,15 @@
   user-select: none;
   -webkit-user-select: none;
 
-  @media (max-width: 1023px) {
+  @include tablet {
     --before-after-height: 420px;
     --before-after-handle-size: 52px;
+    @include grid-columns(6);
   }
 
-  @media (max-width: 767px) {
-    --before-after-height: 320px;
+  @include mobile {
+    width: 100%;
+    --before-after-height: 500px;
     --before-after-radius: 20px;
     --before-after-handle-size: 48px;
   }

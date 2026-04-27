@@ -13,10 +13,14 @@
   margin-bottom: var(--margin-bottom);
   padding-top: var(--pt);
   width: 100%;
+
+  @include mobile {
+    margin-bottom: 0;
+  }
 }
 
 .directions__card {
-  --height: 540x;
+  --height: 800px;
   --offset: 265px;
 
   position: sticky;
@@ -24,12 +28,23 @@
   top: calc(var(--offset) * var(--index));
   display: flex;
 
-  @include desktop-large {
-    --height: 800px;
+  @include desktop-tablet {
+    --height: 540px;
+  }
+
+  @include tablet {
+    height: auto;
+    min-height: var(--height);
   }
 
   @include mobile {
     position: relative;
     top: auto;
+  }
+
+  &:last-child {
+    .direction__wrapper {
+      padding-bottom: 0;
+    }
   }
 }

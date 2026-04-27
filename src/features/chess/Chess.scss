@@ -2,7 +2,7 @@
 @use "@/application/css/utils/mixins" as *;
 
 .chess {
-  --mb: 40px;
+  --mb: 80px;
   width: 100vw;
   overflow: clip;
   &:not(:last-child) {
@@ -12,6 +12,9 @@
 
 .chess__wrapper {
   display: flex;
+  @include mobile {
+    flex-direction: column;
+  }
 }
 
 .chess__image-container {
@@ -23,28 +26,49 @@
   @include desktop-large {
     --h: 700px;
   }
+
+  @include mobile {
+    overflow: clip;
+    --h: 300px;
+    width: 100%;
+  }
 }
 
 .chess__content {
-  @include grid-offset(margin-left, 3);
-  @include grid-offset(padding-right, 3);
-  @include grid-columns(10);
+  --pt: 120px;
+  @include grid-offset(margin-left, 2);
+  @include grid-offset(padding-right, 2);
+  padding-top: var(--pt);
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   position: relative;
+
+  @include desktop-tablet {
+    --pt: 80px;
+  }
 
   @include tablet {
     @include grid-offset(margin-left, 2);
     @include grid-offset(padding-right, 1);
   }
+
+  @include mobile {
+    margin-left: 0;
+  }
 }
 
 .chess__header {
   --mb: 40px;
-  text-transform: uppercase;
   color: $green-1;
   margin-bottom: var(--mb);
+  max-width: 90%;
+
+  @include mobile {
+    --pl: 10px;
+    --mb: 0;
+    padding-left: var(--pl);
+  }
 }
 
 .chess__order {
@@ -55,24 +79,59 @@
   right: 0;
   opacity: 0.7;
   color: $green-1;
-  @include grid-offset(margin-left, 1);
+  @include grid-offset(margin-right, 1);
+  @include desktop-tablet {
+    margin-right: 0;
+  }
+
+  @include tablet {
+    margin-left: 0;
+  }
+  @include mobile {
+    position: static;
+    opacity: 1;
+  }
 }
 
 .chess_image-right {
   .chess__wrapper {
     flex-direction: row-reverse;
+
+    @include mobile {
+      flex-direction: column;
+    }
   }
 
   .chess__content {
     margin-left: 0;
     padding-right: 0;
-    @include grid-offset(margin-right, 5);
-    @include grid-offset(padding-left, 1);
+    @include grid-offset(margin-right, 3);
+    margin-left: 0;
+
+    @include desktop-tablet {
+      @include grid-offset(margin-right, 2);
+    }
   }
 
   .chess__order {
-    --left: 105%;
-    right: auto;
-    left: var(--left);
+    @include grid-offset(margin-right, -1);
+
+    @include mobile {
+      margin-right: 0;
+    }
+  }
+}
+
+.chess__mobile-top {
+  @include mobile {
+    --mb: 40px;
+    margin-bottom: var(--mb);
+    @include flex-center(row, flex-start, flex-start);
+  }
+}
+
+.chess__image-wrapper {
+  @include mobile {
+    overflow: clip;
   }
 }

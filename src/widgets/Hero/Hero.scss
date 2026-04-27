@@ -10,16 +10,25 @@
 }
 
 .hero__wrapper {
-  width: 100%;
+  --t: 24%;
+  position: absolute;
+  inset: 0;
+  top: var(--t);
+  left: 50%;
+  transform: translateX(-50%);
+  @include flex-center(column, flex-start, center);
   z-index: 3;
+  width: fit-content;
+  @include desktop-large {
+    --t: 30%;
+  }
 
   @include tablet {
-    position: absolute;
-    inset: 0;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-    @include flex-center(column, flex-start, center);
+    --t: 18%;
+  }
+
+  @include mobile {
+    width: 100%;
   }
 }
 
@@ -39,29 +48,25 @@
 .hero__text-block {
   position: relative;
   z-index: 2;
-  @include grid-columns(7);
+  @include grid-columns(9);
   color: $white;
-
-  @include desktop-tablet {
-    @include grid-columns(8);
-  }
+  text-align: center;
 
   @include tablet {
     margin: 0 auto;
     @include grid-columns(15);
     text-align: center;
   }
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .hero__button {
-  --b: 70px;
-  position: absolute;
-  bottom: var(--b);
+  --mt: 50px;
+  margin-top: var(--mt);
+  position: relative;
 
   @include tablet {
-    --mt: 50px;
-    margin-top: var(--mt);
-    position: relative;
-    bottom: unset;
   }
 }

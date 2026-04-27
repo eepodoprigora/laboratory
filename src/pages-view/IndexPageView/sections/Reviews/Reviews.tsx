@@ -11,6 +11,7 @@ import classNames from "classnames";
 import { useRef } from "react";
 
 export type RawProps = {
+  preHeader?: string;
   header: string;
   text: string;
   button1?: string;
@@ -25,6 +26,7 @@ type Props = React.HTMLAttributes<HTMLElement> &
   };
 
 export const Reviews = ({
+  preHeader,
   header,
   text,
   button1,
@@ -43,7 +45,7 @@ export const Reviews = ({
       className={classNames("reviews section", className)}
       ref={mergeRefs([ref, rootRef])}>
       <div className="wrapper reviews__wrapper">
-        <SectionTop header={header} text={text} />
+        <SectionTop header={header} text={text} preHeader={preHeader} />
       </div>
       <ResultsSlider slides={slides} />
       <Marquee items={reviews} />

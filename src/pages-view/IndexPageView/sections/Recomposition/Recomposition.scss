@@ -14,3 +14,12 @@
 .recomposition__button {
   margin: 0 auto;
 }
+
+.recomposition__wrapper {
+  padding: 0;
+  width: 100%;
+  @include tablet {
+    @include grid-offset(margin-right, 2);
+    @include grid-offset(margin-left, 2);
+  }
+}

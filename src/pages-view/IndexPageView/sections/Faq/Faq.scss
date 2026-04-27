@@ -19,23 +19,39 @@
   }
 }
 
+.faq__wrapper {
+  width: 100%;
+}
+
 .faq__text-block {
-  @include grid-columns(6);
+  width: 50%;
   text-align: center;
   color: white;
   z-index: 2;
   @include flex-center(column);
+
+  @include mobile {
+    width: 80%;
+  }
 }
 
 .faq__header {
   --mb: 40px;
   margin-bottom: var(--mb);
   text-transform: uppercase;
-  @include grid-columns(4);
 }
 
 .faq__accordion {
   --pt: 80px;
-  @include grid-columns(10);
+  @include grid-columns(12);
   padding-top: var(--pt);
+
+  @include tablet {
+    @include grid-columns(15);
+    margin: 0 auto;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
 }

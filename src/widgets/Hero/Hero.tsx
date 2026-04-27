@@ -55,7 +55,7 @@ export const Hero = ({
             <TextAnimation
               key={item}
               text={item}
-              className="hero__text h5"
+              className="hero__text h4"
               split="letters"
               delay={i * 0.3}
             />
@@ -69,6 +69,7 @@ export const Hero = ({
             href={ctaLink.href}
             icon="arrow-right"
             isExternal
+            variant="hero"
           />
         )}
       </div>

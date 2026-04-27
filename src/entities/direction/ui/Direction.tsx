@@ -20,9 +20,14 @@ export const Direction = ({
   return (
     <div {...props} className={classNames("direction", className)}>
       <div className="wrapper direction__wrapper">
+        <TextAnimation
+          className="direction__header direction__header--mobile h3"
+          text={title}
+          split="letters"
+        />
         <div className="direction__content">
           <TextAnimation
-            className="direction__header block__header"
+            className="direction__header h3"
             text={title}
             split="letters"
           />

@@ -13,27 +13,45 @@
   height: 100%;
   padding: var(--pv) 0;
   border-top: 1px solid rgba($black, 0.2);
+
+  @include tablet {
+    flex-direction: column-reverse;
+    --pv: 50px;
+  }
 }
 
 .direction__image-container {
-  position: relative;
-  --h: 490px;
+  --h: 730px;
+
   height: var(--h);
+  position: relative;
   width: 50%;
 
   @include desktop-tablet {
+    --h: 490px;
   }
-  @include desktop-large() {
-    --h: 720px;
+
+  @include tablet {
+    --h: 290px;
+    width: 100%;
   }
 }
 
 .direction__content {
-  --pt: 100px;
-  padding-top: var(--pt);
+  --pt: 60px;
+  @include grid-columns(14);
+  @include grid-offset(padding-right, 1);
   width: 50%;
-  @include grid-offset(padding-right, 2);
   position: relative;
+  padding-top: var(--pt);
+
+  @include desktop-tablet {
+    --pt: 30px;
+  }
+
+  @include tablet {
+    width: 80%;
+  }
 }
 
 .direction__buttons {
@@ -44,11 +62,42 @@
   @include desktop-large {
     --b: 150px;
   }
+
+  @include tablet {
+    --mt: 40px;
+    position: static;
+    margin-top: var(--mt);
+  }
 }
 
 .direction__button {
   --mr: 15px;
   &:not(:last-child) {
     margin-right: var(--mr);
+  }
+}
+
+.direction__header {
+  --mb: 145px;
+
+  margin-bottom: var(--mb);
+
+  @include desktop-tablet {
+    --mb: 105px;
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+  &.direction__header--mobile {
+    --mb: 40px;
+    display: none;
+    margin-bottom: var(--mb);
+
+    @include tablet {
+      display: block;
+      order: 1;
+    }
   }
 }

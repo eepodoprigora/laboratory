@@ -6,6 +6,10 @@
   @include desktop-tablet {
     --offset-x: 40px;
   }
+
+  @include tablet {
+    --offset-x: 30px;
+  }
   --wrapper-max-width: 3840px;
 
   --grid-columns: 20;

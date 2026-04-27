@@ -34,12 +34,10 @@ export const Advantage = ({
       </div>
 
       <div className="advantage__bottom">
-        <div className="advantage__number filter-text">
-          {addLeadingZero(id)}
-        </div>
+        <div className="advantage__number h5">{addLeadingZero(id)}</div>
         <div className="advantage__content">
           <TextAnimation
-            className="advantage__header filter-text"
+            className="advantage__header h5"
             text={header}
             split="letters"
             delay={index * 0.1}

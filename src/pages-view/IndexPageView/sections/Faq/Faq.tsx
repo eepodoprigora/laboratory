@@ -51,7 +51,7 @@ export const Faq = ({
           </Parallaxed>
           <div className="faq__text-block">
             <TextAnimation
-              className="faq__header text-descr"
+              className="faq__header h3"
               text={header}
               split="letters"
             />
@@ -68,7 +68,7 @@ export const Faq = ({
           </div>
         </div>
       )}
-      <div className="wrapper">
+      <div className="faq__wrapper wrapper">
         <Accordion items={faqItems} className="faq__accordion" />
       </div>
     </div>

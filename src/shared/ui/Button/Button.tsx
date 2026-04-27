@@ -4,7 +4,7 @@ import Link from "@/shared/ui/Link";
 
 type BaseProps = {
   tag?: "button" | "a" | typeof Link;
-  variant?: "primary" | "secondary" | "primary-light" | "header";
+  variant?: "primary" | "secondary" | "primary-light" | "header" | "hero";
   text?: string;
   icon?: "arrow-right" | "arrow-left" | "menu" | "reset";
   iconRepeat?: boolean;
@@ -57,6 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
         "btn--secondary": variant === "secondary",
         "btn--primary-light": variant === "primary-light",
         "btn--header": variant === "header",
+        "btn--hero": variant === "hero",
       },
       className,
     );

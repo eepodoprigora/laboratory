@@ -59,6 +59,11 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
         ctaLink: { name: tp("Пробное занятие"), href: APPLY_GENERAL },
       },
       aboutSectionData: {
+        preHeader: tp("Преимущества"),
+        header: tp("Почему тут получается?"),
+        description: tp(
+          "Небольшие группы и внимательное сопровождение — фокус на качестве, а не на количестве. Вы двигаетесь к форме в комфортном темпе, чувствуя изменения и видя их в зеркале.",
+        ),
         text: tp(
           "Привет, я Кузнецова Анастасия — тренер с опытом более 12 лет и создатель этой студии. Мы создали пространство, где результат строится на профессионализме, эстетике и внимании к каждой детали.",
         ),
@@ -100,6 +105,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
         ],
       },
       recompositionSectionData: {
+        preHeader: tp("комплексный подход"),
         header: tp("Рекомпозиция тела"),
         text: tp(
           "Система, в которой ты становишься стройнее, сильнее и увереннее без экстремальных диет. Тренировки, питание и сопровождение работают вместе на твой результат.",
@@ -166,6 +172,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
         ctaLink: { name: tp("Обсудить цели"), href: DISCUSS_LINK },
       },
       directionsSectionData: {
+        preHeader: tp("форматы занятий"),
         header: tp("Движение в своём ритме"),
         text: tp(
           "Собрали направления под разные задачи и добавили выбор формата: групповые занятия или индивидуальная работа с тренером.",
@@ -214,6 +221,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
         ],
       },
       reviewsSectionData: {
+        preHeader: tp("Трансформация без крайностей"),
         header: tp("Результаты, которые видно и чувствуется"),
         text: tp(
           "Реальные отзывы, заметные изменения в теле, самочувствии и уверенности в себе.",
@@ -430,9 +438,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       },
       contactsSectionData: {
         header: tp("Контакты"),
-        description: tp(
-          "Место, где большие изменения начинаются спокойно и бережно",
-        ),
+        description: tp("Меняйся бережно, начни здесь"),
         coords: [55.9265, 37.548555],
         address: "г. Москва, Дмитровское шоссе, 124А",
         phone: { value: "+7 (989) 599-27-27", link: "+79895992727" },

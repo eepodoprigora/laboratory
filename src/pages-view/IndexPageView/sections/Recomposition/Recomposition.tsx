@@ -8,6 +8,7 @@ import classNames from "classnames";
 import { useRef } from "react";
 
 export type RawProps = {
+  preHeader?: string;
   header: string;
   text: string;
   steps?: ChessRawProps[];
@@ -20,6 +21,7 @@ type Props = React.HTMLAttributes<HTMLElement> &
   };
 
 export const Recomposition = ({
+  preHeader,
   header,
   text,
   steps,
@@ -35,8 +37,8 @@ export const Recomposition = ({
       {...props}
       className={classNames("recomposition section", className)}
       ref={mergeRefs([ref, rootRef])}>
-      <div className="wrapper">
-        <SectionTop header={header} text={text} />
+      <div className="wrapper recomposition__wrapper">
+        <SectionTop header={header} text={text} preHeader={preHeader} />
       </div>
       <div className="recomposition__steps">
         {steps?.map((step, i) => (
