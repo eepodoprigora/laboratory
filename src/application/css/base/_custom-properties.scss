@@ -2,6 +2,7 @@
 
 :root {
   --offset-x: 50px;
+  --header-height: 90px;
 
   @include desktop-tablet {
     --offset-x: 40px;
@@ -9,6 +10,11 @@
 
   @include tablet {
     --offset-x: 30px;
+    --header-height: 80px;
+  }
+
+  @include mobile {
+    --offset-x: 20px;
   }
   --wrapper-max-width: 3840px;
 
@@ -22,8 +28,6 @@
       var(--grid-columns) - var(--grid-gap) *
       ((var(--grid-columns) - 1) / var(--grid-columns))
   );
-
-  --header-height: 90px;
 
   @include mobile() {
     --mobile-vh: 1vh;

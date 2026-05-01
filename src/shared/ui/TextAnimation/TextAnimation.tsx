@@ -14,6 +14,7 @@ type RawProps<T extends ElementType> = {
   duration?: number;
   once?: boolean;
   amount?: number;
+  active?: boolean;
 };
 
 type Props<T extends ElementType> = React.HTMLAttributes<HTMLElement> &
@@ -119,7 +120,9 @@ export const TextAnimation = <T extends ElementType = "div">({
   duration = 0.4,
   once = false,
   amount = 0.4,
+  active = true,
   style,
+
   ...props
 }: Props<T>) => {
   const Tag = (as || "div") as ElementType;
@@ -133,7 +136,7 @@ export const TextAnimation = <T extends ElementType = "div">({
     {
       "text-animation-split-letters": split === "letters",
       "text-animation-split-words": split === "words",
-      "is-in-view": isInView,
+      "is-in-view": isInView && active,
     },
     className,
   );

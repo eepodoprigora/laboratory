@@ -4,94 +4,103 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
   -webkit-font-size-adjust: 100%;
   font-size-adjust: 100%;
 }
 
 body {
   @extend %text-default;
-  line-height: 1.45;
+  line-height: 1.5;
   color: $black;
   font-family: $font-main;
 }
 
 %text-default {
-  @include fs-fluid(15px, 18px, 360px, 1920px);
-  line-height: 1.45;
-  letter-spacing: -0.01em;
+  @include fs-fluid(15px, 17px, 360px, 1920px);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
   font-weight: 400;
 }
 
 %h1-tp {
   font-family: $font-main;
-  @include fs-fluid(60px, 90px, 1280px, 1920px);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  @include fs-fluid(56px, 88px, 1280px, 1920px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
   font-weight: 500;
+
   @include tablet {
-    font-size: 64px;
+    font-size: 60px;
   }
+
   @include mobile() {
-    @include fs-fluid(38px, 64px, 360px, 768px);
+    @include fs-fluid(36px, 60px, 360px, 768px);
     line-height: 1.08;
   }
 }
 
 %h2-tp {
   font-family: $font-main;
-  @include fs-fluid(50px, 80px, 1280px, 1920px);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  @include fs-fluid(46px, 72px, 1280px, 1920px);
+  line-height: 1.06;
+  letter-spacing: -0.018em;
   font-weight: 500;
+
   @include tablet {
-    font-size: 50px;
+    font-size: 46px;
   }
+
   @include mobile() {
-    @include fs-fluid(30px, 50px, 360px, 768px);
+    @include fs-fluid(28px, 46px, 360px, 768px);
   }
 }
 
 %h3-tp {
   font-family: $font-main;
-  @include fs-fluid(40px, 66px, 1280px, 1920px);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  @include fs-fluid(36px, 60px, 1280px, 1920px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   font-weight: 400;
+
   @include tablet {
-    font-size: 40px;
+    font-size: 36px;
   }
+
   @include mobile() {
-    @include fs-fluid(26px, 40px, 320px, 768px);
+    @include fs-fluid(24px, 36px, 320px, 768px);
   }
 }
 
 %h4-tp {
   font-family: $font-main;
-  @include fs-fluid(24px, 34px, 1280px, 1920px);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+  @include fs-fluid(22px, 32px, 1280px, 1920px);
+  line-height: 1.15;
+  letter-spacing: -0.005em;
   font-weight: 500;
+
   @include tablet() {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 
 %h5-tp {
   font-family: $font-main;
-  @include fs-fluid(16px, 20px, 1280px, 1920px);
-  line-height: 1.12;
+  @include fs-fluid(15px, 18px, 1280px, 1920px);
+  line-height: 1.2;
   letter-spacing: 0;
   font-weight: 500;
+
   @include tablet() {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 %link-tp {
   font-family: $font-main;
-  @include fs-fluid(12px, 20px, 1280px, 1920px);
+  @include fs-fluid(12px, 18px, 1280px, 1920px);
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.015em;
   font-weight: 500;
 
   @include tablet() {
@@ -103,7 +112,7 @@ body {
   font-family: $font-main;
   @include fs-fluid(12px, 14px, 320px, 1280px);
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.015em;
   font-weight: 500;
   text-transform: none;
 }
@@ -111,7 +120,8 @@ body {
 %text-descr-tp {
   font-family: $font-main;
   @include fs-fluid(10px, 12px, 1280px, 1920px);
-  line-height: 1.1;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
   font-weight: 500;
 
   @include tablet() {
@@ -121,10 +131,11 @@ body {
 
 %filter-text-tp {
   font-family: $font-main;
-  font-size: 16px;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: 15px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   font-weight: 500;
+
   @include desktop-tablet {
     font-size: 12px;
   }
@@ -132,23 +143,25 @@ body {
 
 %text-l {
   font-family: $font-main;
-  @include fs-fluid(16px, 20px, 1280px, 1920px);
-  line-height: 1.45;
-  letter-spacing: -0.02em;
+  @include fs-fluid(15px, 18px, 1280px, 1920px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   font-weight: 400;
+
   @include tablet() {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 %text-m {
   font-family: $font-main;
-  @include fs-fluid(14px, 16px, 1280px, 1920px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  @include fs-fluid(13px, 15px, 1280px, 1920px);
+  line-height: 1.4;
+  letter-spacing: -0.005em;
   font-weight: 400;
+
   @include tablet() {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
@@ -156,18 +169,22 @@ h1,
 .h1 {
   @extend %h1-tp;
 }
+
 h2,
 .h2 {
   @extend %h2-tp;
 }
+
 h3,
 .h3 {
   @extend %h3-tp;
 }
+
 h4,
 .h4 {
   @extend %h4-tp;
 }
+
 h5,
 .h5 {
   @extend %h5-tp;
@@ -176,18 +193,23 @@ h5,
 .link-tp {
   @extend %link-tp;
 }
+
 .button-tp {
   @extend %button-tp;
 }
+
 .text-descr {
   @extend %text-descr-tp;
 }
+
 .filter-text {
   @extend %filter-text-tp;
 }
+
 .text-l {
   @extend %text-l;
 }
+
 .text-m {
   @extend %text-m;
 }

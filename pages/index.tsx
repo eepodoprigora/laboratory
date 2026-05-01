@@ -435,6 +435,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
               "Это частый страх. Поэтому важны не только сами тренировки, но и поддержка, понятный план и ощущение, что ты не одна в этом процессе.",
           },
         ],
+        ctaLink: { name: tp("Пробное занятие"), href: APPLY_GENERAL },
       },
       contactsSectionData: {
         header: tp("Контакты"),

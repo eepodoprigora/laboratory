@@ -28,4 +28,10 @@
     transform: translateX(-100%);
     transition: transform $app-default-duration $app-default-easing;
   }
+
+  .header--dark & {
+    &::before {
+      background-color: $white;
+    }
+  }
 }

@@ -67,6 +67,15 @@
   margin-top: var(--mt);
   position: relative;
 
-  @include tablet {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity $app-default-duration $app-default-easing,
+    transform $app-default-duration $app-default-easing;
+  transition-delay: 1s;
+
+  &.hero__button--active {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

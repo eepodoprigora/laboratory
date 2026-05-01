@@ -1,5 +1,6 @@
 import { mergeRefs } from "@/shared/lib/merge-refs";
 import { splitTextByDot } from "@/shared/lib/strings";
+import { useAppReadyStore } from "@/shared/model/app-ready";
 import { ILink, ImageShape, VideoShape } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
 import { TextAnimation } from "@/shared/ui/TextAnimation";
@@ -29,8 +30,8 @@ export const Hero = ({
   ...props
 }: Props) => {
   const rootRef = useRef<HTMLElement>(null);
-
   const items = splitTextByDot(text);
+  const appReady = useAppReadyStore((s) => s.appReady);
 
   return (
     <div
@@ -58,12 +59,15 @@ export const Hero = ({
               className="hero__text h4"
               split="letters"
               delay={i * 0.3}
+              active={appReady}
             />
           ))}
         </div>
         {ctaLink && (
           <Button
-            className="hero__button"
+            className={classNames("hero__button", {
+              "hero__button--active": appReady,
+            })}
             tag="a"
             text={ctaLink.name}
             href={ctaLink.href}

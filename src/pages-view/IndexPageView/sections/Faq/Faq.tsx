@@ -1,5 +1,5 @@
 import { mergeRefs } from "@/shared/lib/merge-refs";
-import { ImageShape } from "@/shared/model/types";
+import { ILink, ImageShape } from "@/shared/model/types";
 import Parallaxed from "@/shared/ui/Parallaxed";
 import Reveal from "@/shared/ui/Reveal";
 import { TextAnimation } from "@/shared/ui/TextAnimation";
@@ -9,12 +9,14 @@ import classNames from "classnames";
 import Image from "next/image";
 import { useRef } from "react";
 import { Accordion, AccordionItemType } from "@/shared/ui/Accordion";
+import Button from "@/shared/ui/Button/Button";
 
 export type RawProps = {
   image: ImageShape | null;
   header: string;
   description?: string;
   faqItems: AccordionItemType[];
+  ctaLink?: ILink;
 };
 
 type Props = React.HTMLAttributes<HTMLElement> &
@@ -27,6 +29,7 @@ export const Faq = ({
   header,
   description,
   faqItems,
+  ctaLink,
   className,
   ref,
   ...props
@@ -70,6 +73,16 @@ export const Faq = ({
       )}
       <div className="faq__wrapper wrapper">
         <Accordion items={faqItems} className="faq__accordion" />
+        {ctaLink && (
+          <Button
+            className="faq__cta-button"
+            text={ctaLink.name}
+            href={ctaLink.href}
+            tag="a"
+            icon="arrow-right"
+            isExternal
+          />
+        )}
       </div>
     </div>
   );

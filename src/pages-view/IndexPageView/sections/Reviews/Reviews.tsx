@@ -49,10 +49,10 @@ export const Reviews = ({
       </div>
       <ResultsSlider slides={slides} />
       <Marquee items={reviews} />
-      <div className="reviews__buttons">
+      <div className="group__buttons">
         {button1 && (
           <Button
-            className="reviews__button"
+            className="group__button"
             text={button1.name}
             icon="arrow-right"
             tag="a"
@@ -61,7 +61,7 @@ export const Reviews = ({
         )}
         {button2 && (
           <Button
-            className="reviews__button"
+            className="group__button"
             variant="secondary"
             text={button2.name}
             icon="arrow-right"

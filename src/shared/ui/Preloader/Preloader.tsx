@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAppReadyStore } from "@/shared/model/app-ready";
 import classNames from "classnames";
 
-const PRELOADER_DURATION = 4200;
+const PRELOADER_DURATION = 3600;
 
 export const Preloader = () => {
   const setAppReady = useAppReadyStore((s) => s.setAppReady);
@@ -155,11 +155,6 @@ export const Preloader = () => {
           <path
             d="M184.175 419.585C183.647 419.233 183.503 418.521 183.854 417.992C184.206 417.465 184.918 417.321 185.447 417.672C185.975 418.024 186.118 418.736 185.767 419.264C185.416 419.792 184.703 419.936 184.175 419.585Z"
             fill="#D9D9D9"
-            data-particle
-          />
-          <path
-            d="M184.175 419.585C183.647 419.233 183.503 418.521 183.854 417.992C184.206 4１７.４６５ １８４．９１８ ４１７．３２１ １８５．４４７ ４１７．６７２Ｃ１８５．９７５ ４１８．０２４ １８６．１１８ ４１８．７３６ １８５．７６７ ４１９．２６４Ｃ１８５．４１６ ４１９．７９２ １８４．７０３ ４１９．９３６ １８４．１７５ ４１９．５８５Ｚ"
-            fill="url(#paint₁₀_linear_₈₅_₁₁₀)"
             data-particle
           />
           <path

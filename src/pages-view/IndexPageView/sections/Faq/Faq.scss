@@ -21,6 +21,7 @@
 
 .faq__wrapper {
   width: 100%;
+  @include flex-center(column);
 }
 
 .faq__text-block {
@@ -42,9 +43,9 @@
 }
 
 .faq__accordion {
-  --pt: 80px;
+  --pv: 80px;
   @include grid-columns(12);
-  padding-top: var(--pt);
+  padding: var(--pv) 0;
   margin: 0 auto;
 
   @include tablet {

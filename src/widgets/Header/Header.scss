@@ -43,6 +43,11 @@
   position: relative;
   display: inline-flex;
   margin-right: var(--mr);
+
+  @include tablet {
+    --width: 120px;
+    --height: 37px;
+  }
 }
 
 .header__wrapper {
