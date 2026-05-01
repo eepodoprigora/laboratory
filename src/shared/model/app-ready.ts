@@ -9,6 +9,6 @@ type Action = {
 };
 
 export const useAppReadyStore = create<State & Action>((set) => ({
-    appReady: true,
+    appReady: false,
     setAppReady: (newState) => set(() => ({ appReady: newState })),
 }));

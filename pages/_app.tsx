@@ -14,6 +14,7 @@ import { Providers } from "@/shared/lib/providers";
 import vhMobileFix from "@/shared/lib/dom/vh-mobile-fix";
 import { calculateScrollbarWidth } from "@/shared/lib/dom";
 import dynamic from "next/dynamic";
+import { Preloader } from "@/shared/ui/Preloader";
 const LayoutGrid = dynamic(() => import("@/shared/ui/LayoutGrid"), {
   ssr: false,
 });
@@ -71,7 +72,7 @@ const AnimatedPage = ({
 const App = ({ Component, pageProps, router }: AppProps<CommonPageProps>) => {
   return (
     <Providers>
-      {/* <Preloader /> */}
+      <Preloader />
       <AppInits />
       {/* <PageTransitionOverlay /> */}
 

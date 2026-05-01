@@ -8,8 +8,6 @@ import Image from "next/image";
 import { useRef } from "react";
 import { addLeadingZero } from "@/shared/lib/strings";
 import Parallaxed from "@/shared/ui/Parallaxed";
-import { useMediaQuery } from "usehooks-ts";
-import { useMounted } from "@/shared/lib/use-mounted";
 
 export type RawProps = {
   id: number | string;
@@ -34,11 +32,6 @@ export const Chess = ({
   ...props
 }: Props) => {
   const rootRef = useRef<HTMLElement>(null);
-  const isMobile = useMediaQuery(
-    "(max-width: 767px), (max-width: 900px) and (orientation: landscape)",
-  );
-
-  const mounted = useMounted();
 
   return (
     <div
@@ -59,14 +52,7 @@ export const Chess = ({
         {image && (
           <div className="chess__image-wrapper">
             <div className="chess__image-container">
-              <Parallaxed
-                floatingOnly={!isMobile && mounted}
-                movePower={0.12}
-                direction={1}
-                scalePower={!isMobile && mounted ? 0.1 : 0}
-                className={classNames({
-                  responsive__item: isMobile && mounted,
-                })}>
+              <Parallaxed scalePower={0.1} className="responsive__item">
                 <Image
                   src={image.src}
                   alt={image.alt ?? ""}
