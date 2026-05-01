@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import classNames from "classnames";
 import { PAGE_TRANSITION_FADE_MS } from "@/shared/сonfig/const";
 import { usePageTransitionStore } from "@/shared/model/page-transition";
-import { PreloaderSvg } from "../Preloader/PreloaderSvg";
+import { PreloaderSvg } from "@/shared/ui/Preloader";
 
 type RawProps = {
   className?: string;

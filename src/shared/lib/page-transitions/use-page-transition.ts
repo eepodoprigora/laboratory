@@ -30,21 +30,17 @@ const sleep = (ms: number) =>
 export const usePageTransition = () => {
     const name = usePageTransitionStore((state) => state.name);
     const targetElement = usePageTransitionStore((state) => state.targetElement);
-    const setIsTransitioning = usePageTransitionStore(
-        (state) => state.setIsTransitioning,
-    );
-    const resetPageTransition = usePageTransitionStore(
-        (state) => state.resetPageTransition,
-    );
+    const setIsTransitioning = usePageTransitionStore((state) => state.setIsTransitioning);
+    const setIsLeaving = usePageTransitionStore((state) => state.setIsLeaving);
+    const setIsHolding = usePageTransitionStore((state) => state.setIsHolding);
+    const setIsEntering = usePageTransitionStore((state) => state.setIsEntering);
+    const resetPageTransition = usePageTransitionStore((state) => state.resetPageTransition);
 
     const [isPresent, safeToRemove] = usePresence();
-
     const hasStartedExitRef = useRef(false);
 
     useEffect(() => {
-        if (isPresent || hasStartedExitRef.current) {
-            return;
-        }
+        if (isPresent || hasStartedExitRef.current) return;
 
         hasStartedExitRef.current = true;
 
@@ -52,25 +48,35 @@ export const usePageTransition = () => {
 
         if (isOwner) {
             setIsTransitioning(true);
+            setIsLeaving(true);
+            setIsEntering(false);
+
             sharedLeavePromise = leaveFnMap[name]({ targetElement });
         }
 
         let isCancelled = false;
 
         const run = async () => {
+
             await sharedLeavePromise;
 
-            if (isCancelled) {
-                return;
+            if (isCancelled) return;
+
+            if (isOwner) {
+                setIsLeaving(false);
+                setIsHolding(true);
             }
 
-            await sleep(PAGE_TRANSITION_FADE_MS + PAGE_TRANSITION_HOLD_MS);
-
-            if (isCancelled) {
-                return;
+            await sleep(PAGE_TRANSITION_HOLD_MS);
+            if (isCancelled) return;
+            if (isOwner) {
+                setIsHolding(false);
             }
-
             safeToRemove();
+
+            if (isOwner) {
+                setIsEntering(true);
+            }
 
             await sleep(PAGE_TRANSITION_FADE_MS);
 
@@ -82,14 +88,15 @@ export const usePageTransition = () => {
 
         void run();
 
-        return () => {
-            isCancelled = true;
-        };
+        return () => { isCancelled = true; };
     }, [
         isPresent,
         name,
         resetPageTransition,
         safeToRemove,
+        setIsEntering,
+        setIsHolding,
+        setIsLeaving,
         setIsTransitioning,
         targetElement,
     ]);

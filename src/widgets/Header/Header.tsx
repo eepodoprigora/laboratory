@@ -4,6 +4,7 @@ import { ILink, ImageShape } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
 import Link from "@/shared/ui/Link";
 import classNames from "classnames";
+import { usePathname } from "next/navigation";
 
 type RawProps = {
   logo?: ImageShape | null;
@@ -15,15 +16,20 @@ type Props = React.HTMLAttributes<HTMLElement> & RawProps;
 
 export const Header = ({ logo, menuLinks, ctaLink }: Props) => {
   const headerClass = useHeaderColorStore((s) => s.headerClass);
+  const pathname = usePathname();
+  const { scrollToSection } = useScrollToSection({ offset: 50 });
 
-  const { scrollToSection } = useScrollToSection({
-    offset: 50,
-  });
+  const handleMenuClick = (id: string) => {
+    if (pathname === "/") {
+      scrollToSection(id);
+    }
+  };
+
   return (
     <header className={classNames("header", headerClass)}>
       <div className="wrapper header__wrapper">
         {logo && (
-          <Link href={"/"} className="header__logo text-xl" isLogo>
+          <Link href="/" className="header__logo text-xl" isLogo>
             <span className="header__logo-image"></span>
           </Link>
         )}
@@ -31,11 +37,17 @@ export const Header = ({ logo, menuLinks, ctaLink }: Props) => {
           <ul className="list-unstyled header__list">
             {menuLinks.map((item) => (
               <li key={item.href} className="header__list-item">
-                <button
-                  className="link"
-                  onClick={() => scrollToSection(item.href)}>
-                  <span className="link__container">{item.name}</span>
-                </button>
+                {pathname === "/" ? (
+                  <button
+                    className="link"
+                    onClick={() => handleMenuClick(item.href)}>
+                    <span className="link__container">{item.name}</span>
+                  </button>
+                ) : (
+                  <Link href={`/#${item.href}`} className="link">
+                    {item.name}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

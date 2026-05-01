@@ -6,7 +6,6 @@ import { AnimatePresence } from "motion/react";
 import { CommonPageProps } from "@/shared/model/types";
 import { usePageTransitionStore } from "@/shared/model/page-transition";
 import { usePrevious } from "@/shared/lib/use-previous";
-// import { Preloader } from "@/shared/ui/Preloader";
 import AppInits from "@/application/AppInits";
 import { Header } from "@/widgets/Header";
 import { usePageTransition } from "@/shared/lib/page-transitions";

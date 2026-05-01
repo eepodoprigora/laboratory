@@ -21,7 +21,7 @@ const Link = ({
   ...props
 }: Props) => {
   const isPageTransitioning = usePageTransitionStore(
-    (state) => state.isLeaving,
+    (state) => state.isLeaving || state.isHolding || state.isEntering,
   );
 
   const style: React.CSSProperties = {
