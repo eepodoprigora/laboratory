@@ -1,0 +1,1 @@
+export { Footer, type RawProps as FooterRawProps } from './Footer';

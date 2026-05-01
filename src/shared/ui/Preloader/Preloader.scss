@@ -7,7 +7,7 @@
   z-index: 9999;
   display: grid;
   place-items: center;
-  background: #363032;
+  background: $brown;
   transition: opacity $app-medium-duration $app-default-easing;
 
   &.preloader--hide {
@@ -31,18 +31,30 @@
   width: 100%;
   height: auto;
   overflow: visible;
-}
 
-.preloader__text {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity $app-medium-duration $app-default-easing,
-    transform $app-medium-duration $app-default-easing;
+  [data-particle] {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: opacity $app-medium-duration $app-default-easing;
+    transition-delay: calc(0.1s + var(--index) * 0.005s);
 
-  .preloader--active & {
-    opacity: 1;
-    transform: translateY(0);
+    .preloader--active & {
+      opacity: 1;
+    }
+  }
+
+  .preloader__text {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity $app-medium-duration $app-default-easing,
+      transform $app-medium-duration $app-default-easing;
+
+    .preloader--active & {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -57,18 +69,6 @@
   .preloader--active & {
     opacity: 1;
     transform: rotate(0);
-  }
-}
-
-[data-particle] {
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: opacity $app-medium-duration $app-default-easing;
-  transition-delay: calc(0.1s + var(--index) * 0.005s);
-
-  .preloader--active & {
-    opacity: 1;
   }
 }
 

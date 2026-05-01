@@ -1,0 +1,4 @@
+.text-page__inner {
+  --pv: 120px;
+  padding: calc(var(--header-height) + var(--pv)) 0 var(--pv);
+}

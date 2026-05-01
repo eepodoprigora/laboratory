@@ -2,6 +2,7 @@ import { useScrollToSection } from "@/shared/lib/use-scroll-to-section";
 import { useHeaderColorStore } from "@/shared/model/header-color";
 import { ILink, ImageShape } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
+import Link from "@/shared/ui/Link";
 import classNames from "classnames";
 
 type RawProps = {
@@ -22,9 +23,9 @@ export const Header = ({ logo, menuLinks, ctaLink }: Props) => {
     <header className={classNames("header", headerClass)}>
       <div className="wrapper header__wrapper">
         {logo && (
-          <a href={"/"} className="header__logo text-xl">
+          <Link href={"/"} className="header__logo text-xl" isLogo>
             <span className="header__logo-image"></span>
-          </a>
+          </Link>
         )}
         {menuLinks && (
           <ul className="list-unstyled header__list">

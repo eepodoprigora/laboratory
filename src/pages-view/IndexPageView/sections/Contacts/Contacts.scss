@@ -1,6 +1,11 @@
 @use "@/application/css/base/variables" as *;
 @use "@/application/css/utils/mixins" as *;
 
+.contacts {
+  --pb: 0;
+  padding-bottom: var(--pb);
+}
+
 .contacts__map {
   --h: 700px;
   width: 50%;

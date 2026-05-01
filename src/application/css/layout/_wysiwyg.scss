@@ -2,6 +2,19 @@
 @use "@/application/css/utils/mixins" as *;
 
 .wysiwyg {
+  h1 {
+    margin-bottom: 60px;
+  }
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  p + h2,
+  ul + h2 {
+    margin-top: 60px;
+  }
+
   p:not([class]) {
     &:not(:first-child) {
       margin-top: 1.33em;

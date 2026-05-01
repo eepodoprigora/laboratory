@@ -20,6 +20,7 @@
 @use "@/shared/ui/Accordion/Accordion.scss";
 @use "@/shared/ui/AnimatedCounter/AnimatedCounter.scss";
 @use "@/shared/ui/Preloader/Preloader.scss";
+@use "@/shared/ui/PageTransitionOverlay/PageTransitionOverlay.scss";
 @use "@/shared/ui/SectionTop/SectionTop.scss";
 
 // entities
@@ -37,6 +38,7 @@
 
 // widgets
 @use "@/widgets/Header/Header.scss";
+@use "@/widgets/Footer/Footer.scss";
 @use "@/widgets/Hero/Hero.scss";
 @use "@/widgets/ResultsSlider/ResultsSlider.scss";
 @use "@/widgets/Marquee/Marquee.scss";
@@ -51,3 +53,4 @@
 
 // pages
 @use "@/pages-view/IndexPageView/IndexPageView.scss";
+@use "@/pages-view/TextPageView/TextPageView.scss";

@@ -1,0 +1,18 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.footer {
+  --pv: 40px;
+  padding: var(--pv) 0;
+  background-color: rgba($beige-1, 0.5);
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__rights {
+  opacity: 0.7;
+}

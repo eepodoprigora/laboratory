@@ -23,6 +23,12 @@ export const getCommonPageProps = async (): Promise<Omit<CommonPageProps, 'bread
             ],
 
             ctaLink: { name: 'Записаться', href: APPLY_GENERAL }
+        },
+        footer: {
+            rights: '© 2026 Лаборатория стройности. Все права защищены.',
+            menuLinks: [
+                { name: 'Политика конфиденциальности', href: 'privacy-policy' }
+            ],
         }
     };
 };

@@ -9,9 +9,17 @@ type Props = Omit<
     href: string;
     isExternal?: boolean;
     ref?: React.Ref<HTMLAnchorElement>;
+    isLogo?: boolean;
   };
 
-const Link = ({ ref, children, href, isExternal = false, ...props }: Props) => {
+const Link = ({
+  ref,
+  children,
+  href,
+  isExternal = false,
+  isLogo = false,
+  ...props
+}: Props) => {
   const isPageTransitioning = usePageTransitionStore(
     (state) => state.isLeaving,
   );
@@ -42,7 +50,8 @@ const Link = ({ ref, children, href, isExternal = false, ...props }: Props) => {
       href={href}
       scroll={props.scroll ?? false}
       style={style}>
-      <span className="link__container">{children}</span>
+      {isLogo && children}
+      {!isLogo && <span className="link__container">{children}</span>}
     </NextLink>
   );
 };

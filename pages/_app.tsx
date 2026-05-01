@@ -15,6 +15,8 @@ import vhMobileFix from "@/shared/lib/dom/vh-mobile-fix";
 import { calculateScrollbarWidth } from "@/shared/lib/dom";
 import dynamic from "next/dynamic";
 import { Preloader } from "@/shared/ui/Preloader";
+import { Footer } from "@/widgets/Footer";
+import { PageTransitionOverlay } from "@/shared/ui/PageTransitionOverlay";
 const LayoutGrid = dynamic(() => import("@/shared/ui/LayoutGrid"), {
   ssr: false,
 });
@@ -74,7 +76,7 @@ const App = ({ Component, pageProps, router }: AppProps<CommonPageProps>) => {
     <Providers>
       <Preloader />
       <AppInits />
-      {/* <PageTransitionOverlay /> */}
+      <PageTransitionOverlay />
 
       <main className="main">
         <Header {...pageProps.header} />
@@ -84,6 +86,7 @@ const App = ({ Component, pageProps, router }: AppProps<CommonPageProps>) => {
             <Component {...pageProps} />
           </PageTransitionPresence>
         </AnimatedPage>
+        <Footer {...pageProps.footer} />
       </main>
       {process.env.NODE_ENV === "development" && <LayoutGrid />}
     </Providers>

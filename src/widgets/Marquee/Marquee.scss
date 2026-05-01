@@ -11,11 +11,11 @@
   padding: var(--pv) 0;
   width: 100%;
 
-  //   @include hover {
-  //     .marquee__track {
-  //       animation-play-state: paused;
-  //     }
-  //   }
+  @include tablet {
+    --pt: 60px;
+    --pb: 40px;
+    padding: var(--pt) 0 var(--pb);
+  }
 }
 
 .marquee__viewport {

@@ -24,6 +24,10 @@ export type CommonPageProps = AppCommonPageData & {
         menuLinks: ILink[];
         ctaLink: ILink;
     }
+    footer: {
+        rights: string;
+        menuLinks: ILink[];
+    }
 
 };
 

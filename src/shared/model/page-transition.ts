@@ -1,48 +1,42 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
-export type PageTransitionName = 'default' | 'instant';
-export type PageTransitionMode = 'wait' | 'sync' | 'popLayout';
+export type PageTransitionName = "default" | "instant";
 
-export const DEFAULT_MODE: PageTransitionMode = 'wait';
-export const DEFAULT_NAME: PageTransitionName = 'default';
-
-type State = {
-    mode: PageTransitionMode;
-    name: PageTransitionName;
+type SetPageTransitionData = {
+    name?: PageTransitionName;
     targetElement?: Element | null;
-    isLeaving: boolean;
-    isEntering: boolean;
 };
 
-type Action = {
-    setPageTransition: (transition: Omit<State, 'isLeaving' | 'isEntering'>) => void;
+type PageTransitionState = {
+    name: PageTransitionName;
+    targetElement: Element | null;
+    isTransitioning: boolean;
+    setPageTransition: (data?: SetPageTransitionData) => void;
+    setIsTransitioning: (value: boolean) => void;
     resetPageTransition: () => void;
-    setIsLeaving: (value: boolean) => void;
-    setIsEntering: (value: boolean) => void;
 };
 
-export const usePageTransitionStore = create<State & Action>((set) => ({
-    mode: DEFAULT_MODE,
-    name: DEFAULT_NAME,
+export const usePageTransitionStore = create<PageTransitionState>((set) => ({
+    name: "default",
     targetElement: null,
-    isLeaving: false,
-    isEntering: false,
-    setPageTransition: (transition) =>
-        set(() => ({
-            ...transition,
-        })),
-    resetPageTransition: () =>
-        set(() => ({
-            mode: DEFAULT_MODE,
-            name: DEFAULT_NAME,
+    isTransitioning: false,
+
+    setPageTransition: (data) => {
+        set({
+            name: data?.name ?? "default",
+            targetElement: data?.targetElement ?? null,
+        });
+    },
+
+    setIsTransitioning: (value) => {
+        set({ isTransitioning: value });
+    },
+
+    resetPageTransition: () => {
+        set({
+            name: "default",
             targetElement: null,
-        })),
-    setIsLeaving: (value) =>
-        set(() => ({
-            isLeaving: value,
-        })),
-    setIsEntering: (value) =>
-        set(() => ({
-            isEntering: value,
-        })),
+            isTransitioning: false,
+        });
+    },
 }));
