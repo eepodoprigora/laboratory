@@ -15,8 +15,6 @@ const AppHead = ({ meta = {} }: Props) => {
   const pathname = router.asPath.split("?")[0];
   const title = [meta.title, meta.baseTitle].filter(Boolean).join(" — ");
 
-  console.log("AppHead rendered with title:", title, "and pathname:", pathname);
-
   return (
     <Head>
       <meta charSet="utf-8" />
