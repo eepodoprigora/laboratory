@@ -16,6 +16,7 @@ import dynamic from "next/dynamic";
 import { Preloader } from "@/shared/ui/Preloader";
 import { Footer } from "@/widgets/Footer";
 import { PageTransitionOverlay } from "@/shared/ui/PageTransitionOverlay";
+import AppHead from "@/application/AppHead";
 const LayoutGrid = dynamic(() => import("@/shared/ui/LayoutGrid"), {
   ssr: false,
 });
@@ -75,6 +76,7 @@ const App = ({ Component, pageProps, router }: AppProps<CommonPageProps>) => {
     <Providers>
       <Preloader />
       <AppInits />
+      <AppHead meta={pageProps.meta} />
       <PageTransitionOverlay />
 
       <main className="main">
