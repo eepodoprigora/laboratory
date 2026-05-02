@@ -8,7 +8,7 @@ export const getCommonPageProps = async (): Promise<Omit<CommonPageProps, 'bread
     return {
         meta: {
             baseTitle: 'Лаборатория стройности',
-            description: 'Фитнесс студия',
+            description: 'Лаборатория стройности - Фитнесс студия. Силовые, танцы, йога и массаж. Камерный формат, персональный подход. Флагманское направление — рекомпозиция тела.',
             ogImage: '/static/images/og-image.jpg',
         },
         header: {
