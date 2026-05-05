@@ -17,6 +17,11 @@
   transition:
     background-color $app-default-duration $app-default-easing,
     color $app-default-duration $app-default-easing;
+
+  @include tablet {
+    --pv: 12px;
+    --ph: 15px;
+  }
 }
 
 %btn-primary {
@@ -148,5 +153,36 @@
   @include hover {
     background-color: transparent;
     border-color: $white;
+  }
+}
+
+.btn--prices {
+  @extend %btn-primary;
+  background-color: transparent;
+  display: inline-flex;
+  border: 1px solid $green-1;
+  color: $green-1;
+  @include hover-active {
+    background-color: transparent;
+  }
+
+  .btn__icon {
+    background-color: $green-1;
+  }
+
+  .header--dark & {
+    background-color: $white;
+    border-color: $white;
+    color: $green-1;
+
+    .btn__icon {
+      background-color: $white;
+    }
+
+    @include hover-active {
+      background-color: transparent;
+      border-color: $white;
+      color: $white;
+    }
   }
 }

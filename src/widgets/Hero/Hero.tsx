@@ -19,24 +19,28 @@ export type RawProps = {
 type Props = React.HTMLAttributes<HTMLElement> &
   RawProps & {
     ref?: React.RefObject<HTMLDivElement | null>;
+    variant?: "secondary";
   };
 
 export const Hero = ({
   image,
   text,
   ctaLink,
+  variant,
   className,
   ref,
   ...props
 }: Props) => {
   const rootRef = useRef<HTMLElement>(null);
-  const items = splitTextByDot(text);
+  const items = splitTextByDot(text ?? "");
   const appReady = useAppReadyStore((s) => s.appReady);
 
   return (
     <div
       {...props}
-      className={classNames("hero", className)}
+      className={classNames("hero", className, {
+        "hero--secondary": variant === "secondary",
+      })}
       ref={mergeRefs([ref, rootRef])}>
       {image && (
         <div className="hero__image-container">
@@ -52,16 +56,17 @@ export const Hero = ({
       )}
       <div className="wrapper hero__wrapper">
         <div className="hero__text-block">
-          {items.map((item, i) => (
-            <TextAnimation
-              key={item}
-              text={item}
-              className="hero__text h4"
-              split="letters"
-              delay={i * 0.3}
-              active={appReady}
-            />
-          ))}
+          {items &&
+            items.map((item, i) => (
+              <TextAnimation
+                key={item}
+                text={item}
+                className="hero__text h4"
+                split="letters"
+                delay={i * 0.3}
+                active={appReady}
+              />
+            ))}
         </div>
         {ctaLink && (
           <Button

@@ -34,6 +34,7 @@ export const SectionTop = ({
           text={header}
           split="letters"
         />
+
         <TextAnimation className="block__descr" text={text} split="words" />
       </div>
     </div>

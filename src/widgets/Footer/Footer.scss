@@ -11,6 +11,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include mobile {
+    --gap: 20px;
+    gap: var(--gap);
+    flex-direction: column-reverse;
+  }
 }
 
 .footer__rights {

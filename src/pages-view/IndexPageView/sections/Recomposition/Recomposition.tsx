@@ -2,6 +2,9 @@ import { Chess, ChessRawProps } from "@/features/chess";
 import { mergeRefs } from "@/shared/lib/merge-refs";
 import { ILink } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
+import { ButtonGroup } from "@/shared/ui/ButtonGroup";
+import Link from "@/shared/ui/Link/Link";
+import { Prices, PricesRawProps } from "@/shared/ui/Prices";
 import { SectionTop } from "@/shared/ui/SectionTop";
 
 import classNames from "classnames";
@@ -13,6 +16,8 @@ export type RawProps = {
   text: string;
   steps?: ChessRawProps[];
   ctaLink?: ILink;
+  viewPrices?: ILink;
+  prices: PricesRawProps;
 };
 
 type Props = React.HTMLAttributes<HTMLElement> &
@@ -26,6 +31,8 @@ export const Recomposition = ({
   text,
   steps,
   ctaLink,
+  viewPrices,
+  prices,
   className,
   ref,
   ...props
@@ -40,6 +47,7 @@ export const Recomposition = ({
       <div className="wrapper recomposition__wrapper">
         <SectionTop header={header} text={text} preHeader={preHeader} />
       </div>
+      <Prices items={prices?.items} />
       <div className="recomposition__steps">
         {steps?.map((step, i) => (
           <Chess
@@ -50,14 +58,30 @@ export const Recomposition = ({
           />
         ))}
       </div>
-      {ctaLink && (
-        <Button
-          className="recomposition__button"
-          text={ctaLink?.name}
-          href={ctaLink.href}
-          tag="a"
-          icon="arrow-right"
-          isExternal
+
+      {ctaLink && viewPrices && (
+        <ButtonGroup
+          button1={
+            <Button
+              className="recomposition__button"
+              text={ctaLink.name}
+              href={ctaLink.href}
+              tag="a"
+              icon="arrow-right"
+              variant="secondary"
+              isExternal
+            />
+          }
+          button2={
+            <Button
+              className="recomposition__button"
+              href={viewPrices.href}
+              tag={Link}
+              text={viewPrices.name}
+              icon="arrow-right"
+              needsContainer={false}
+            />
+          }
         />
       )}
     </div>

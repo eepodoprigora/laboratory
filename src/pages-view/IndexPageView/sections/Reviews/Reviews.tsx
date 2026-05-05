@@ -3,6 +3,7 @@ import { IReview } from "@/entities/review";
 import { mergeRefs } from "@/shared/lib/merge-refs";
 import { ILink } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
+import { ButtonGroup } from "@/shared/ui/ButtonGroup";
 import { SectionTop } from "@/shared/ui/SectionTop";
 import { Marquee } from "@/widgets/Marquee";
 import { ResultsSlider } from "@/widgets/ResultsSlider";
@@ -49,27 +50,29 @@ export const Reviews = ({
       </div>
       <ResultsSlider slides={slides} />
       <Marquee items={reviews} />
-      <div className="group__buttons">
-        {button1 && (
-          <Button
-            className="group__button"
-            text={button1.name}
-            icon="arrow-right"
-            tag="a"
-            isExternal
-          />
-        )}
-        {button2 && (
-          <Button
-            className="group__button"
-            variant="secondary"
-            text={button2.name}
-            icon="arrow-right"
-            tag="a"
-            isExternal
-          />
-        )}
-      </div>
+      {button1 && button2 && (
+        <ButtonGroup
+          button1={
+            <Button
+              className="group__button"
+              text={button1.name}
+              icon="arrow-right"
+              tag="a"
+              isExternal
+            />
+          }
+          button2={
+            <Button
+              className="group__button"
+              variant="secondary"
+              text={button2.name}
+              icon="arrow-right"
+              tag="a"
+              isExternal
+            />
+          }
+        />
+      )}
     </div>
   );
 };

@@ -110,8 +110,9 @@ export const About = ({
           )}
         </div>
       </div>
-
-      <SectionTop preHeader={preHeader} header={header} text={description} />
+      <div className="wrapper">
+        <SectionTop preHeader={preHeader} header={header} text={description} />
+      </div>
 
       <div className="about__bottom">
         <div

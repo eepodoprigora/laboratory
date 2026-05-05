@@ -55,7 +55,7 @@
 }
 
 .direction__buttons {
-  --b: 200px;
+  --b: 150px;
   position: absolute;
   bottom: var(--b);
 
@@ -79,13 +79,9 @@
 }
 
 .direction__header {
-  --mb: 125px;
+  --mb: 60px;
   color: $green-1;
   margin-bottom: var(--mb);
-
-  @include desktop-tablet {
-    --mb: 105px;
-  }
 
   @include tablet {
     display: none;

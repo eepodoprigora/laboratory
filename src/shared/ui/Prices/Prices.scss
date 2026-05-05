@@ -1,0 +1,37 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.prices {
+  --pv: 40px;
+  padding: var(--pv) 0;
+  display: flex;
+  gap: 60px;
+}
+
+// .prices--secondary {
+//   flex-direction: column;
+//   gap: 0;
+// }
+
+.prices__block {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &:not(:last-child) {
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -30px;
+      content: "";
+      width: 1px;
+      height: 100%;
+      background-color: $green-1;
+    }
+  }
+}
+
+.prices__text {
+  margin-bottom: 10px;
+  opacity: 0.5;
+}

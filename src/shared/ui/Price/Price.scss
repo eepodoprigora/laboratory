@@ -1,0 +1,18 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.price {
+  --gap: 30px;
+  --pv: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--pv) 0;
+  border-bottom: 1px solid rgba($green-1, 0.5);
+  gap: var(--gap);
+}
+
+.price__value {
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

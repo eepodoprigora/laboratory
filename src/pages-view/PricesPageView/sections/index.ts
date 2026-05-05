@@ -1,0 +1,1 @@
+export { Details, type DetailsRawProps } from './Details';

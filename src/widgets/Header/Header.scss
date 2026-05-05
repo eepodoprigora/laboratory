@@ -14,6 +14,9 @@
   transition:
     color $app-default-duration $app-default-easing,
     background-color $app-default-duration $app-default-easing;
+  @include tablet {
+    --mr: 0;
+  }
 }
 
 .header--dark {
@@ -43,10 +46,11 @@
   position: relative;
   display: inline-flex;
   margin-right: var(--mr);
+  z-index: 2;
 
   @include tablet {
-    --width: 120px;
-    --height: 37px;
+    --width: 100px;
+    --height: 31px;
   }
 }
 
@@ -70,6 +74,12 @@
   }
 }
 
-.header__button {
+.header__prices {
+  --mr: 20px;
+  margin-right: var(--mr);
   margin-left: auto;
+
+  @include tablet {
+    --mr: 10px;
+  }
 }

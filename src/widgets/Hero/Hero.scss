@@ -79,3 +79,28 @@
     transform: translateY(0);
   }
 }
+
+.hero--secondary {
+  .hero__wrapper {
+    --t: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: fit-content;
+    align-items: flex-start;
+
+    @include tablet {
+      --t: 18%;
+      left: 50%;
+      transform: translateX(-50%);
+      align-items: center;
+    }
+  }
+
+  .hero__text-block {
+    text-align: left;
+
+    @include tablet {
+      text-align: center;
+    }
+  }
+}

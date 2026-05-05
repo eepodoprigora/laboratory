@@ -4,6 +4,11 @@ import { IDirection } from "../model";
 import Parallaxed from "@/shared/ui/Parallaxed";
 import { TextAnimation } from "@/shared/ui/TextAnimation";
 import Button from "@/shared/ui/Button";
+import Reveal from "@/shared/ui/Reveal";
+import DOMPurify from "isomorphic-dompurify";
+import { ButtonGroup } from "@/shared/ui/ButtonGroup";
+import Link from "@/shared/ui/Link";
+import { Prices } from "@/shared/ui/Prices";
 
 type Props = IDirection & React.HTMLAttributes<HTMLElement>;
 
@@ -12,8 +17,9 @@ export const Direction = ({
   image,
   title,
   description,
-  button,
-  link,
+  ctaLink,
+  viewPrices,
+  prices,
   className,
   ...props
 }: Props) => {
@@ -31,27 +37,44 @@ export const Direction = ({
             text={title}
             split="letters"
           />
-          <TextAnimation
-            className="direction__description text-m"
-            text={description ?? ""}
-            split="words"
-          />
-          <div className="direction__buttons">
-            {/* <Button
-              className="direction__button"
-              text={button}
-              icon="arrow-right"
-            /> */}
-            <Button
-              className="direction__button"
-              icon="arrow-right"
-              // variant="secondary"
-              href={link.href}
-              tag="a"
-              isExternal>
-              {link.name}
-            </Button>
-          </div>
+          {description && (
+            <Reveal>
+              <div
+                className="wysiwyg text-m"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(description),
+                }}
+              />
+            </Reveal>
+          )}
+
+          <Prices items={prices.items} variant="secondary" />
+          {ctaLink && viewPrices && (
+            <ButtonGroup
+              className="direction__buttons"
+              button1={
+                <Button
+                  className="direction__button"
+                  icon="arrow-right"
+                  href={ctaLink.href}
+                  tag="a"
+                  isExternal
+                  text={ctaLink.name}
+                />
+              }
+              button2={
+                <Button
+                  className="direction__button"
+                  icon="arrow-right"
+                  variant="secondary"
+                  href={viewPrices.href}
+                  tag={Link}
+                  text={viewPrices.name}
+                  needsContainer={false}
+                />
+              }
+            />
+          )}
         </div>
         <div className="direction__image-container">
           <Parallaxed scalePower={0.1} className="responsive__item">

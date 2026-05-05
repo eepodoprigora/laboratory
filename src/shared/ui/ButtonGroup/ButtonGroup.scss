@@ -1,0 +1,14 @@
+@use "@/application/css/base/variables" as *;
+@use "@/application/css/utils/mixins" as *;
+
+.group__buttons {
+  display: flex;
+  margin: 0 auto;
+}
+
+.group__button {
+  --mr: 15px;
+  &:not(:last-child) {
+    margin-right: var(--mr);
+  }
+}

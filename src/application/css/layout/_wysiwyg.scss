@@ -10,6 +10,14 @@
     margin-bottom: 40px;
   }
 
+  ul {
+    list-style: disc;
+  }
+
+  ul ul {
+    list-style: disc;
+  }
+
   p + h2,
   ul + h2 {
     margin-top: 60px;

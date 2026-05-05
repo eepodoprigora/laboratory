@@ -9,12 +9,13 @@ import { usePathname } from "next/navigation";
 type RawProps = {
   logo?: ImageShape | null;
   menuLinks?: ILink[];
+  prices: ILink;
   ctaLink?: ILink;
 };
 
 type Props = React.HTMLAttributes<HTMLElement> & RawProps;
 
-export const Header = ({ logo, menuLinks, ctaLink }: Props) => {
+export const Header = ({ logo, menuLinks, prices, ctaLink }: Props) => {
   const headerClass = useHeaderColorStore((s) => s.headerClass);
   const pathname = usePathname();
   const { scrollToSection } = useScrollToSection({ offset: 50 });
@@ -29,7 +30,10 @@ export const Header = ({ logo, menuLinks, ctaLink }: Props) => {
     <header className={classNames("header", headerClass)}>
       <div className="wrapper header__wrapper">
         {logo && (
-          <Link href="/" className="header__logo text-xl" isLogo>
+          <Link
+            href="/"
+            className="header__logo text-xl"
+            needsContainer={false}>
             <span className="header__logo-image"></span>
           </Link>
         )}
@@ -52,10 +56,22 @@ export const Header = ({ logo, menuLinks, ctaLink }: Props) => {
             ))}
           </ul>
         )}
+        {prices && (
+          <Button
+            tag={Link}
+            href={prices.href}
+            className="header__prices"
+            variant="prices"
+            icon="arrow-right"
+            needsContainer={false}>
+            {prices.name}
+          </Button>
+        )}
+
         {ctaLink && (
           <Button
             className="header__button"
-            text={ctaLink?.name}
+            text={ctaLink.name}
             tag="a"
             icon="arrow-right"
             href={ctaLink.href}

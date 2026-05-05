@@ -42,6 +42,10 @@
   text-transform: uppercase;
 }
 
+.faq__header--no-image {
+  margin-bottom: 0;
+}
+
 .faq__accordion {
   --pv: 80px;
   @include grid-columns(12);
@@ -56,4 +60,8 @@
     width: 100%;
     --pv: 40px;
   }
+}
+
+.faq__accordion--no-image {
+  --pv: 40px;
 }

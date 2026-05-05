@@ -8,12 +8,11 @@ import {
   DirectionsRawProps,
   Reviews,
   ReviewsRawProps,
-  Faq,
-  FaqRawProps,
   Contacts,
   ContactsRawProps,
 } from "@/pages-view/IndexPageView/sections";
 import { Hero, HeroRawProps } from "@/widgets/Hero";
+import { Faq, FaqRawProps } from "@/widgets/Faq";
 import { useHeaderColorObserver } from "@/shared/lib/use-header-color";
 import { useRef } from "react";
 import { useMapSections } from "@/shared/lib/use-map-sections";

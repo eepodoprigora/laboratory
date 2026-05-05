@@ -21,7 +21,7 @@ export const getCommonPageProps = async (): Promise<Omit<CommonPageProps, 'bread
                 { name: 'Вопросы', href: 'faq' },
                 { name: 'Контакты', href: 'contacts' },
             ],
-
+            prices: { name: 'Стоимость', href: 'prices' },
             ctaLink: { name: 'Записаться', href: APPLY_GENERAL }
         },
         footer: {

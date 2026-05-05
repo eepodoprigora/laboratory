@@ -12,7 +12,7 @@ import { Accordion, AccordionItemType } from "@/shared/ui/Accordion";
 import Button from "@/shared/ui/Button/Button";
 
 export type RawProps = {
-  image: ImageShape | null;
+  image?: ImageShape | null;
   header: string;
   description?: string;
   faqItems: AccordionItemType[];
@@ -58,6 +58,7 @@ export const Faq = ({
               text={header}
               split="letters"
             />
+
             {description && (
               <Reveal>
                 <div
@@ -72,7 +73,17 @@ export const Faq = ({
         </div>
       )}
       <div className="faq__wrapper wrapper">
-        <Accordion items={faqItems} className="faq__accordion" />
+        {!image && (
+          <TextAnimation
+            className="faq__header faq__header--no-image h3"
+            text={header}
+            split="letters"
+          />
+        )}
+        <Accordion
+          items={faqItems}
+          className="faq__accordion faq__accordion--no-image"
+        />
         {ctaLink && (
           <Button
             className="faq__cta-button"
