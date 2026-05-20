@@ -197,6 +197,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
             id: 2,
             image: { src: "/static/images/directions/dir_2.jpg" },
             title: tp("Йога"),
+            scheduleTitle: tp("Расписание занятий:"),
+            scheduleItems: ["Cреда - 20:00", "Воскресенье - 09:30"],
             description: tp(`
       <p>Практика для восстановления и контакта с телом:</p>
       <ul>
@@ -225,6 +227,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
               ],
             },
           },
+
           {
             id: 3,
             image: { src: "/static/images/directions/dir_3.jpg" },
@@ -262,6 +265,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
             id: 4,
             image: { src: "/static/images/directions/dir_4.jpg" },
             title: tp("Танцы"),
+            scheduleTitle: tp("Расписание занятий:"),
+            scheduleItems: ["Суббота - 20:00"],
             description: tp(`
       <p>Twerk и High Heels — про тело и уверенность:</p>
       <ul>

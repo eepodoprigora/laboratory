@@ -46,21 +46,32 @@
   padding-top: var(--pt);
 
   @include desktop-tablet {
-    --pt: 30px;
+    --pt: 0;
   }
 
   @include tablet {
+    --pt: 30px;
     width: 80%;
+  }
+
+  .prices {
+    @include desktop-tablet {
+      --pv: 20px;
+    }
+
+    @include tablet {
+      --pv: 40px;
+    }
   }
 }
 
 .direction__buttons {
-  --b: 150px;
+  --b: 100px;
   position: absolute;
   bottom: var(--b);
 
   @include desktop-tablet {
-    --b: 150px;
+    --b: 30px;
   }
 
   @include tablet {
@@ -83,6 +94,10 @@
   color: $green-1;
   margin-bottom: var(--mb);
 
+  @include desktop-tablet {
+    --mb: 30px;
+  }
+
   @include tablet {
     display: none;
   }
@@ -97,4 +112,9 @@
       order: 1;
     }
   }
+}
+
+.direction__schedule-title {
+  --mb: 10px;
+  margin-bottom: var(--mb);
 }

@@ -19,6 +19,8 @@ export const Direction = ({
   description,
   ctaLink,
   viewPrices,
+  scheduleTitle,
+  scheduleItems,
   prices,
   className,
   ...props
@@ -49,6 +51,20 @@ export const Direction = ({
           )}
 
           <Prices items={prices.items} variant="secondary" />
+          {scheduleTitle && scheduleItems && scheduleItems.length > 0 && (
+            <div className="direction__schedule">
+              <div className="direction__schedule-title text-l">
+                {scheduleTitle}
+              </div>
+              <ul className="direction__schedule-items wysiwyg">
+                {scheduleItems.map((item, i) => (
+                  <li key={i} className="direction__schedule-item text-m">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {ctaLink && viewPrices && (
             <ButtonGroup
               className="direction__buttons"

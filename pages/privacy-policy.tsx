@@ -1,4 +1,4 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { GetStaticProps, InferGetServerSidePropsType } from "next";
 
 import TextPageView, { TextPageViewRawProps } from "@/pages-view/TextPageView";
 import { getCommonPageProps } from "@/application/get-common-page-props";
@@ -7,7 +7,7 @@ import { SITE_URL } from "@/shared/сonfig/const";
 
 const PrivacyPolicyPage = ({
   textBlocks,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetServerSidePropsType<typeof getStaticProps>) => {
   return <TextPageView textBlocks={textBlocks} />;
 };
 
@@ -15,9 +15,7 @@ export default PrivacyPolicyPage;
 
 export type TextPageProps = CommonPageProps & TextPageViewRawProps;
 
-export const getServerSideProps: GetServerSideProps<
-  TextPageProps
-> = async ({}) => {
+export const getStaticProps: GetStaticProps<TextPageProps> = async () => {
   const commonPageProps = await getCommonPageProps();
 
   return {

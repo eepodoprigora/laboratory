@@ -9,5 +9,7 @@ export interface IDirection {
     ctaLink: ILink;
     viewPrices: ILink;
     prices: PricesRawProps;
+    scheduleTitle?: string;
+    scheduleItems?: string[];
 };
 
