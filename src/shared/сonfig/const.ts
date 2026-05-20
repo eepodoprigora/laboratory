@@ -14,4 +14,4 @@ export const DARK_HEADER_CLASS = 'header--dark'
 export const APPLY_GENERAL = 'https://n633552.yclients.com/company:598800/record-type?api_key=zna3an7p3yq13vqfny0k'
 export const DISCUSS_LINK = 'https://t.me/laboratoryafit'
 
-export const SITE_URL = 'https://laboratory-seven.vercel.app/'
+export const SITE_URL = 'https://laboratoryfit.ru/'
