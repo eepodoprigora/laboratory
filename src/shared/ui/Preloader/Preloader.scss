@@ -3,7 +3,10 @@
 
 .preloader {
   position: fixed;
-  inset: 0;
+  height: vh(100);
+  width: 100%;
+  top: 0;
+  left: 0;
   z-index: 9999;
   display: grid;
   place-items: center;

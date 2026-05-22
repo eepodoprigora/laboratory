@@ -54,6 +54,10 @@
     width: 80%;
   }
 
+  @include mobile {
+    width: 90%;
+  }
+
   .prices {
     @include desktop-tablet {
       --pv: 20px;
