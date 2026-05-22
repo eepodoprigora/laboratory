@@ -39,7 +39,7 @@ export const Details = ({
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (hash) {
-      const timer = setTimeout(() => scrollToSection(hash), 100); // ← и сюда
+      const timer = setTimeout(() => scrollToSection(hash), 100);
       return () => clearTimeout(timer);
     }
   }, []);

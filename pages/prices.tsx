@@ -5,7 +5,7 @@ import PricesPageView, {
 import { getCommonPageProps } from "@/application/get-common-page-props";
 import { CommonPageProps } from "@/shared/model/types";
 import { tp } from "@/shared/lib/formatting";
-import { APPLY_GENERAL } from "@/shared/сonfig/const";
+import { APPLY_GENERAL, DISCUSS_LINK } from "@/shared/сonfig/const";
 
 const PricesPage = ({
   h1,
@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
                 type: "single",
               },
             ],
-            ctaLink: { name: tp("Записаться"), href: APPLY_GENERAL },
+            ctaLink: { name: tp("Обсудить цели"), href: DISCUSS_LINK },
           },
           {
             id: "yoga-prices",

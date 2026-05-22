@@ -1,4 +1,5 @@
 import { useScrollToSection } from "@/shared/lib/use-scroll-to-section";
+import { useAppReadyStore } from "@/shared/model/app-ready";
 import { useHeaderColorStore } from "@/shared/model/header-color";
 import { ILink, ImageShape } from "@/shared/model/types";
 import Button from "@/shared/ui/Button";
@@ -19,6 +20,7 @@ export const Header = ({ logo, menuLinks, prices, ctaLink }: Props) => {
   const headerClass = useHeaderColorStore((s) => s.headerClass);
   const pathname = usePathname();
   const { scrollToSection } = useScrollToSection({ offset: 50 });
+  const appReady = useAppReadyStore((state) => state.appReady);
 
   const handleMenuClick = (id: string) => {
     if (pathname === "/") {
@@ -27,7 +29,10 @@ export const Header = ({ logo, menuLinks, prices, ctaLink }: Props) => {
   };
 
   return (
-    <header className={classNames("header", headerClass)}>
+    <header
+      className={classNames("header", headerClass, {
+        "header--ready": appReady,
+      })}>
       <div className="wrapper header__wrapper">
         {logo && (
           <Link

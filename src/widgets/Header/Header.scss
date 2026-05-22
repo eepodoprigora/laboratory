@@ -11,11 +11,17 @@
   z-index: 10;
   background-color: rgba($white, 0.5);
   backdrop-filter: blur(10px);
+  transform: translateY(-100%);
   transition:
     color $app-default-duration $app-default-easing,
-    background-color $app-default-duration $app-default-easing;
+    background-color $app-default-duration $app-default-easing,
+    transform $app-default-duration $app-default-easing;
   @include tablet {
     --mr: 0;
+  }
+
+  &.header--ready {
+    transform: translateY(0);
   }
 }
 
