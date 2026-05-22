@@ -23,6 +23,10 @@
   &.header--ready {
     transform: translateY(0);
   }
+
+  .no-js & {
+    transform: translateY(0);
+  }
 }
 
 .header--dark {
